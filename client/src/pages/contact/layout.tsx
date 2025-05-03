@@ -1,4 +1,4 @@
-const ContactPage = () =>{
+const ContactLayout = () =>{
     return(
         <div className="contactPage">
             <h1>Constact Page</h1>
@@ -6,4 +6,4 @@ const ContactPage = () =>{
     );
 }
 
-export default ContactPage;
+export default ContactLayout;
