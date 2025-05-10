@@ -7,7 +7,7 @@ import LoginPage from './pages/login'
 import RegisterPage from './pages/register'
 import AboutPage from './pages/about'
 import ProductPage from './pages/product'
-import Footer from './components/footer';
+import Footer from './components/layout/footer/footer';
 
 function App() {
   return (
