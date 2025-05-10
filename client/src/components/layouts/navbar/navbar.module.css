@@ -2,14 +2,17 @@
     position: fixed;
     width: 100vw;
     top: 0;
-    background-color: #f5faf7;
-    z-index: 100;
-    padding: 15px 20px 15px 20px;
+    background-color: #EDF2EE;
+    z-index: 999;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    backdrop-filter: blur(7px);
 }
 
 .nav-container {
-    position: relative;
-    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin: 0;
     display: flex;
     align-items: center;
@@ -23,37 +26,6 @@
     gap: 25px;
 }
 
-.logo-link {
-    display: flex;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-icon {
-    background-color: #2bb673;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo-text {
-    font-weight: 750;
-    font-size: 22px;
-    color: black;
-}
-
 .links {
     display: flex;
     gap: 20px;
@@ -64,24 +36,23 @@
     display: flex;
     gap: 2rem;
     text-decoration: none;
-    color: #666;
+    color: #474847;
     font-weight: 500;
     position: relative;
 }
 
 .link:hover {
-    color: black;
+    color: #000000;
 }
 
 .link.selected {
-    color: black;
+    color: #000000;
     font-weight: 600;
     text-decoration: underline #2bb673 2px;
     text-underline-offset: 5px;
 }
 
 .actions {
-    position: absolute;
     top: 0;
     right: 20px;
     display: flex;
@@ -92,10 +63,9 @@
 }
 
 .login-btn {
-    height: 100%;
-    border: 1px solid #2bb673;
+    border: 1px solid #22C55E;
     background: transparent;
-    color: #2bb673;
+    color: #22C55E;
     padding: 0.4rem 1rem;
     border-radius: 999px;
     font-weight: 600;
@@ -108,17 +78,17 @@
 }
 
 .login-btn.selected {
-    background: #2bb673;
+    background: #16A34A;
     color: white;
 }
 
 .login-btn:hover {
-    border: 1px solid #19814f;
+    border: 1px solid #16A34A;
     color: black;
 }
 
 .login-btn.selected:hover {
-    background: #19814f;
+    background: #11833b;
     color: white;
 }
 
@@ -129,7 +99,6 @@
     background: black;
     position: relative;
     font-size: 1.2rem;
-    color: black;
     cursor: pointer;
 }
 
@@ -157,11 +126,7 @@
 
 .menu {
     position: absolute;
-    /* top: 0; */
     right: 30px;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-evenly; */
     flex-direction: column;
     height: 20px;
     width: 30px;
@@ -183,7 +148,6 @@
 }
 
 .line{
-    /* position: absolute; */
     background: gray;
     width: 20px;
     height: 2px;
@@ -228,16 +192,14 @@
 }
 
 .linksM {
-    /* position: relative; */
     top: 40px;
-    height: fit-content; /* 0 */
+    height: fit-content; 
     width: 100vw;
-    background: white;
+    background: #F0F5F1;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     padding-bottom: 100%;  
-    /* overflow: hidden; */
 }
 
 .linksM.invisible{
@@ -251,7 +213,7 @@
     position: relative;
     height: 50px;
     width: 100%;
-    color: rgb(65, 62, 62);
+    color: #474847;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -267,17 +229,17 @@
     height: 70%;
     width: 2px;
     left: 15px;
-    background: #1da764;
+    background: #16A34A
 }
 
 .linkM.selected{
-    color: black
+    color: #000000;
 }
 
 .navbarM {
     width: 100vw;
     top: 0;
-    background-color: #f5faf7;
+    background-color:#F0F5F1;
     z-index: 100;
     padding: 15px 20px 15px 20px;
 }
@@ -294,7 +256,6 @@
 .actionsM {
     display: flex;
     justify-content: space-evenly;
-    /* gap: 20px; */
     padding-top: 30px;
 }
 
@@ -304,16 +265,20 @@
     align-items: center;
     width: 45%;
     height: 40px;
-    border: solid 1px green;
-    color: #19814f;
+    border: solid 1px #22C55E;
+    color: #22C55E;
+    background: #FFFFFF;
     border-radius: 5px;
-    /* padding: 5px; */
     cursor: pointer;
     text-decoration: none;
 }
 
+.login-btnM:hover{
+    background:#FFFFFF;
+}
+
 .login-btnM.selected{
-    background: #19814f;
+    background: #16A34A;
     color: white;
 }
 
@@ -323,9 +288,14 @@
     align-items: center;
     width: 45%;
     height: 40px;
-    border: solid 2px black;
-    background: black;
+    border: solid 2px #18181B;
+    background: #18181B;
     border-radius: 5px;
-    /* padding: 5px; */
     cursor: pointer;
+    transition: all 0.2s;
+}
+
+.shoping-cart-buttonM:hover{
+    background: #2D2E30;
+    border: solid 2px #2D2E30;
 }

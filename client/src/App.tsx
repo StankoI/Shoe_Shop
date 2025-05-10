@@ -5,7 +5,7 @@ import LoginPage from './pages/login'
 import RegisterPage from './pages/register'
 import AboutPage from './pages/about'
 import ProductPage from './pages/product'
-import Navbar from './components/navbar';
+import Navbar from './components/layouts/navbar/navbar';
 
 function App() {
   return (
