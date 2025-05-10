@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import './footer.css'
 import { useState } from 'react';
 import { FaInstagram, FaFacebook, FaYoutube, FaTwitter } from 'react-icons/fa';
-import { FaX } from 'react-icons/fa6';
 
 const Footer = () => {
 
