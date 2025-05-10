@@ -52,11 +52,10 @@ a:hover::after {
 }
 
 .footer {
-    background: rgb(1, 1, 40);
+    background: #111827;
     width: 100vw;
-    /* overflow: hidden; */
-    /* margin: 0; */
 }
+
 
 .footer-links {
     display: flex;
@@ -120,6 +119,9 @@ a:hover::after {
 }
 
 .social-media-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -128,10 +130,8 @@ a:hover::after {
 
 .email-form {
     display: flex;
-    /* overflow: hidden; */
     box-sizing: border-box;
     border: 1px solid transparent;
-    /* border: transparent; */
 }
 
 .email-form input[type="email"] {
@@ -167,14 +167,17 @@ a:hover::after {
     border-radius: 8px;
 }
 
+.footer-text-email{
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .footer-below {
     display: flex;
     flex-direction: column;
     height: 200px;
-    /* padding-bottom: 100px; */
     align-items: center;
     gap: 20px;
-    /* justify-content: center;  */
     flex-wrap: wrap;
 }
 
@@ -207,16 +210,72 @@ a:hover::after {
     align-items: center;
     justify-content: space-between;
     width: 40%;
-    /* flex-wrap: wrap; */
 }
 
 .footer-below-more-info {
     display: flex;
     align-items: center;
-    justify-content: center;
     border-radius: 30px;
     padding: 10px;
-    box-sizing: border-box;
-    background: rgb(37, 37, 37);
-    color: gray;
+    background: #1F2937;
+    font-size: 14px;
+    font-weight: 300;
+    gap:10px;
+}
+
+.dot{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.dot.green{
+    background: green;
+}
+
+.dot.blue{
+    background: blue;
+}
+
+.dot.orange{
+    background: orange;
+}
+
+@media (max-width: 768px) {
+    .footer-below {
+        height: auto;
+        gap: 30px;
+    }
+
+    .footer-below-copyright-and-likns {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .footer-copyright{
+        width: 100%;
+        padding-left: 0;
+        justify-content: center;
+    }
+
+
+    .footer-below-links {
+        width: 100%;
+        padding-left: 0;
+        justify-content: center;
+    }
+
+    .footer-below-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-below-more {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
 }
