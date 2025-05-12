@@ -154,6 +154,7 @@ const Navbar = () => {
                             }
                             onClick={() => setClicked(false)}
                         >
+                            <FaArrowRightToBracket />
                             Login
                         </NavLink>
 
@@ -162,6 +163,7 @@ const Navbar = () => {
                             onClick={() => setClicked(false)}
                         >
                             Cart {productsInCart === 0 ? "" : `(${productsInCart})`}
+                            <CiShoppingBasket className={styles["shoping-cart-icon-M"]}/>
                         </div>
                     </div>
                 </div>
