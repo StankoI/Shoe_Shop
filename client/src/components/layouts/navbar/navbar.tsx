@@ -3,6 +3,8 @@ import styles from "./navbar.module.css"
 import { useState } from "react";
 import useDevice from "../../../hooks/useDevice";
 import Logo from "../icons/icons"
+import { CiShoppingBasket } from "react-icons/ci";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 
 const Navbar = () => {
 
@@ -62,10 +64,12 @@ const Navbar = () => {
                                 `${styles["login-btn"]} ${isActive ? styles["selected"] : ""}`
                             }
                         >
+                            <FaArrowRightToBracket />
                             Login
                         </NavLink>
 
                         <div className={styles["shoping-cart-button"]}>
+                            <CiShoppingBasket className={styles["shoping-cart-icon"]}/>
                             <div
                                 className={`${styles["shoping-cart-notification"]} ${productsInCart === 0 ? styles["invisible"] : ""
                                     }`}
