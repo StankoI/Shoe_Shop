@@ -5,7 +5,9 @@ import LoginPage from './pages/login'
 import RegisterPage from './pages/register'
 import AboutPage from './pages/about'
 import ProductPage from './pages/product'
+import Footer from './components/layout/footer/footer';
 import Navbar from './components/layouts/navbar/navbar';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/products" element={<ProductPage />} />
         </Routes>
+        <Footer/>
       </Router>
     </>
   )
