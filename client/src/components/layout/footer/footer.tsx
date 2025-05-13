@@ -47,21 +47,21 @@ const Footer = () => {
                     </div>
                     <div className={styles["footer-links-div"]}>
                         <div className={styles["section-name"]}>Shop</div>
-                        <a>All Products</a>
-                        <a>Man</a>
-                        <a>Woman</a>
-                        <a>Sustainable Collection</a>
-                        <a>New Arrival</a>
-                        <a>Sale</a>
+                        <div className={styles["footer-link-text"]}>All Products</div>
+                        <div className={styles["footer-link-text"]}>Man</div>
+                        <div className={styles["footer-link-text"]}>Woman</div>
+                        <div className={styles["footer-link-text"]}>Sustainable Collection</div>
+                        <div className={styles["footer-link-text"]}>New Arrival</div>
+                        <div className={styles["footer-link-text"]}>Sale</div>
                     </div>
                     <div className={styles["footer-links-div"]}>
                         <div className={styles["section-name"]}>Company</div>
-                        <a>About Us</a>
-                        <a>Sustainability</a>
-                        <a>Careers</a>
-                        <a>Contact Us</a>
-                        <a>Blog</a>
-                        <a>Press</a>
+                        <div className={styles["footer-link-text"]}>About Us</div>
+                        <div className={styles["footer-link-text"]}>Sustainability</div>
+                        <div className={styles["footer-link-text"]}>Careers</div>
+                        <div className={styles["footer-link-text"]}>Contact Us</div>
+                        <div className={styles["footer-link-text"]}>Blog</div>
+                        <div className={styles["footer-link-text"]}>Press</div>
                     </div>
                     <div className={styles["footer-links-div"]}>
                         <div className={styles["section-name"]}>Contact</div>
@@ -89,10 +89,10 @@ const Footer = () => {
                         <p>@{new Date().getFullYear()} EcoStride. All rights reserved.</p>
                     </div>
                     <div className={styles["footer-below-links"]}>
-                        <a>Privacy Policy</a>
-                        <a>Terms of Service</a>
-                        <a>Cookie Policy</a>
-                        <a>Accessibility</a>
+                        <div className={styles["footer-link-text"]}>Privacy Policy</div>
+                        <div className={styles["footer-link-text"]}>Terms of Service</div>
+                        <div className={styles["footer-link-text"]}>Cookie Policy</div>
+                        <div className={styles["footer-link-text"]}>Accessibility</div>
                     </div>
                 </div>
                 <div className={styles["footer-below-more"]}>
