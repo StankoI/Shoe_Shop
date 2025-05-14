@@ -1,7 +1,11 @@
+import CreateAccount from "../../components/layouts/createAccountComponent/createAccountComponent";
+import RegisterComponent from "../../components/layouts/register/registerComponent";
+
 const RegisterLayout = () => {
     return (
         <div className="registerPage">
-            <h1>Register Page</h1>
+            <CreateAccount/>
+            <RegisterComponent/>
         </div>
     );
 }
