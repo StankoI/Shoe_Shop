@@ -1,3 +1,4 @@
+import Benefits from "../../components/layouts/benefits/benefits";
 import LoginComponent from "../../components/layouts/login/loginComponent";
 import WelcomeBack from "../../components/layouts/welcomeBack/welcomeBack";
 
@@ -6,6 +7,7 @@ const LoginLayout = () => {
         <div className="loginPage">
             <WelcomeBack/>
             <LoginComponent/>
+            <Benefits/>
         </div>
     );
 }
