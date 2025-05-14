@@ -66,7 +66,7 @@ const RegisterComponent = () => {
                         Create Account
                     </div>
                     <div className={styles["sign-in"]}>
-                        Already have an account
+                        Already have an account?
                         <Link to="/login" className={styles["sign-in-text"]}>
                             Sign in
                         </Link>

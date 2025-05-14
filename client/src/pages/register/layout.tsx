@@ -1,4 +1,5 @@
 import CreateAccount from "../../components/layouts/createAccountComponent/createAccountComponent";
+import JoinOurCommunity from "../../components/layouts/joinOurCommunity/JoinOurCommunity";
 import RegisterComponent from "../../components/layouts/register/registerComponent";
 
 const RegisterLayout = () => {
@@ -6,6 +7,7 @@ const RegisterLayout = () => {
         <div className="registerPage">
             <CreateAccount/>
             <RegisterComponent/>
+            <JoinOurCommunity/>
         </div>
     );
 }
