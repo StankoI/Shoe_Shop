@@ -1,0 +1,25 @@
+
+.welcome-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding-top: 130px;
+    padding-bottom: 40px;
+    background: #F0F5F1;
+}
+
+.title{
+    font-size: 33px;
+    font-weight: 700;
+    color: black;
+    text-align: center;
+}
+
+.text{
+    font-size: 18px;
+    color: gray;
+    width: 45%;
+    text-align: center;
+}
