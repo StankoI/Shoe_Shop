@@ -28,21 +28,21 @@ const AboutTextComponent = () => {
                 <div className={styles["button"]}>Our Journey</div>
             </div>
             <div className={styles["boxes"]}>
-                <div>
-                    <div>70%</div>
-                    <div>Recycled Materials</div>
+                <div className={styles["box"]}>
+                    <div className={`${styles["number"]} ${styles["one"]}`}>70%</div>
+                    <div className={styles["box-text"]}>Recycled Materials</div>
                 </div>
-                <div>
-                    <div>50+</div>
-                    <div>Countries Served</div>
+                <div className={styles["box"]}>
+                    <div className={`${styles["number"]} ${styles["two"]}`}>50+</div>
+                    <div className={styles["box-text"]}>Countries Served</div>
                 </div>
-                <div>
-                    <div>40%</div>
-                    <div>Carbon Reduction</div>
+                <div className={styles["box"]}>
+                    <div className={`${styles["number"]} ${styles["three"]}`}>40%</div>
+                    <div className={styles["box-text"]}>Carbon Reduction</div>
                 </div>
-                <div>
-                    <div>5%</div>
-                    <div>To Community Projects</div>
+                <div className={styles["box"]}>
+                    <div className={`${styles["number"]} ${styles["four"]}`}>5%</div>
+                    <div className={styles["box-text"]}>To Community Projects</div>
                 </div>
             </div>
         </div>

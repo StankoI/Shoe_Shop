@@ -114,7 +114,7 @@
     box-sizing: border-box;
 }
 
-.boxes>div {
+.box {
     background: white;
     padding: 20px;
     border-radius: 8px;
@@ -124,30 +124,30 @@
     width: 150px;
 }
 
-.boxes>div>div:first-child {
+.number{
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 8px;
 }
 
-.boxes>div>div:nth-child(1) {
+.number.one {
     color: green;
 }
 
-.boxes>div:nth-child(2)>div:first-child {
+.number.two {
     color: #3B82F6;
 }
 
-.boxes>div:nth-child(3)>div:first-child {
+.number.three{
     color: #F59E0B;
 }
 
-.boxes>div:nth-child(4)>div:first-child {
+.number.four{
     color: #8B5CF6;
 }
 
 
-.boxes>div>div:last-child {
+.box-text {
     font-size: 14px;
     color: gray;
 }
