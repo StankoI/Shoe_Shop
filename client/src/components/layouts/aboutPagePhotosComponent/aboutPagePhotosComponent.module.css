@@ -53,3 +53,10 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+@media(max-width:768px)
+{
+    .outer-container{
+        width: 100%;
+    }
+}
