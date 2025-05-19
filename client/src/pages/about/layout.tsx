@@ -1,7 +1,10 @@
+import AboutPageOurMissionComponent from "../../components/layouts/aboutPageOurMissionComponent/aboutPageOurMissionComponent";
+import styles from "./about.module.css"
+
 const AboutLayout = () => {
     return (
-        <div className="aboutPage">
-            <h1>About Page</h1>
+        <div className={styles["aboutPage"]}>
+            <AboutPageOurMissionComponent/>
         </div>
     );
 }
