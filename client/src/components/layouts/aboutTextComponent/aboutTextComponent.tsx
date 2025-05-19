@@ -1,9 +1,6 @@
 import styles from "./aboutTextComponent.module.css"
 
 const AboutTextComponent = () => {
-
-    
-
     return (
         <div className={styles["container"]}>
             <div className={styles["label"]}>
