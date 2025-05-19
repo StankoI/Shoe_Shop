@@ -1,7 +1,11 @@
+import Slogan from "../../components/slogan";
+import WhyChooseUs from "../../components/layouts/whyChooseUs/whyChooseUs";
+
 const HomeLayout = () => {
     return(
-        <div className="home">
-            <h1>HomePage</h1>
+        <div>
+            <Slogan/>
+            <WhyChooseUs/>
         </div>
     );
 }

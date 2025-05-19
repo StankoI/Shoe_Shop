@@ -1,7 +1,13 @@
+import Benefits from "../../components/layouts/benefits/benefits";
+import LoginComponent from "../../components/layouts/login/loginComponent";
+import WelcomeBack from "../../components/layouts/welcomeBack/welcomeBack";
+
 const LoginLayout = () => {
     return(
         <div className="loginPage">
-            <h1>Login page</h1>
+            <WelcomeBack/>
+            <LoginComponent/>
+            <Benefits/>
         </div>
     );
 }
