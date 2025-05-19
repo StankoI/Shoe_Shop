@@ -1,12 +1,15 @@
+import OfficeHours from "../../components/layouts/officeHours/officeHours";
 import ContactTextComponent from "../../components/layouts/contactTextComponent/contactTextComponent";
 import ContactForm from "../../components/layouts/contactForm/contactForm";
-import styles from "./contact.module.css"
 
 const ContactLayout = () =>{
     return(
-        <div className= {styles["contactPage"]}>
+        <div>
             <ContactTextComponent/>
+            {/* TODO add <div> */}
+            <OfficeHours/>
             <ContactForm/>
+            {/* TODO add </div> */}
         </div>
     );
 }
