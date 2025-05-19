@@ -40,7 +40,7 @@ body{
 .boxes-container{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap:30px
 }
@@ -53,7 +53,6 @@ body{
     gap:10px;
     box-sizing: border-box;
     width: 380px;
-    height: 220px;
     background: white;
     border-radius: 20px;
     border: solid 1px rgb(233, 233, 233);
@@ -106,7 +105,7 @@ body{
 .under-boxes-container{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap:30px;
     width: 100%;
     padding-top: 70px;
