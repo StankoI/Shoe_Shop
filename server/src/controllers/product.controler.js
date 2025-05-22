@@ -1,6 +1,6 @@
 const Product = require('../models/product');
 
-export async function addProduct (req, res){
+async function addProduct (req, res){
     try {
         const {
             name,
@@ -29,3 +29,6 @@ export async function addProduct (req, res){
         res.status(404).json({ error: err.message });
     }
 }
+
+
+module.exports = { addProduct };
