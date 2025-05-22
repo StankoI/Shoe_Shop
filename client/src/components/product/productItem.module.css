@@ -2,18 +2,21 @@
 .container{
     width: 210px;
     height: 300px;
-    border: solid 1px black;
+    border: solid 1px rgb(231, 231, 231);
     border-radius: 15px;
-    z-index: 10000000;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translateX(-50%);
-    transform: translateY(-50%); 
+    /* position: absolute; */
+    position: relative;
     background: white;
     display: flex;
     flex-direction: column;
-    gap:5px
+    gap:5px;
+    margin:100px;   /* да се махне */
+    transition: all 0.3s;
+}
+
+.container:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .image{
@@ -36,7 +39,7 @@
 
 .name{
     color: black;
-    font-size: 700;
+    font-weight: 700;
 }
 
 .rating{
@@ -44,5 +47,36 @@
 }
 
 .price{
+    font-weight: 700;
     color: black;
+}
+
+.new{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    background: black;
+    padding: 3px 8px;
+    border-radius: 30px;
+    left: 8px;
+    top: 8px;
+}
+
+.eco{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    background: #22C55E;
+    padding: 3px 8px;
+    border-radius: 30px;
+    right: 8px;
+    top: 8px;
 }

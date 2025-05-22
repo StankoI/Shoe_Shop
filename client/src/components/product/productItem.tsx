@@ -3,13 +3,14 @@ import styles from "./productItem.module.css"
 
 type Props = {
     product: Product;
-
 }
 
 const ProductItem = ({ product }: Props) => {
 
     return (
         <div className={styles["container"]}>
+            <div className={styles["new"]}>New</div>
+            <div className={styles["eco"]}>Eco</div>
             <div className={styles["image"]} style={{ backgroundImage: `url(${product.img})` }}></div>
             <div className={styles["information"]}>
                 <div className={styles["name"]}>{product.name}</div>
