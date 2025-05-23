@@ -7,6 +7,7 @@ import AboutPage from './pages/about'
 import ProductPage from './pages/product'
 import Footer from './components/layout/footer/footer';
 import Navbar from './components/layouts/navbar/navbar';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <>
       <Router>
         <Navbar />
+        <ScrollToTop/>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
