@@ -10,8 +10,9 @@
     display: flex;
     flex-direction: column;
     gap:5px;
-    margin:100px;   /* да се махне */
+    /* margin:100px;   да се махне */
     transition: all 0.3s;
+    cursor: pointer;
 }
 
 .container:hover{
