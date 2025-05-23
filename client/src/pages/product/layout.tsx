@@ -6,29 +6,28 @@ import Product from "../../models/product";
 //     name: string;
 //     description: string;
 //     price: number;
-//     availability: number;
 //     img: string;
 //     categories: string[];
+//     color: string;
+//     in_stock: InStock[];
 //     createdAt: Date;
-//     updatedAt: Date;
+
 
 const prd: Product = {
     id: "1",
     name: "Nike Air Max 270",
     description: "Леки и удобни маратонки за ежедневна употреба.",
     price: 199.99,
-    availability: 12,
-    sizes: [41,42,43,44],
     img: "../../../public/placeholder.svg",
-    colors: ["blue", "yellow", "white"],
     categories: ["мъжки", "обувки", "спортни"],
+    color: "black",
+    in_stock:[{size:43, quantity: 4},{size:44, quantity: 5},{size:45, quantity: 6}],
     createdAt: new Date(Date.now()),
-    updatedAt: new Date(Date.now())
 }
 
 const ProductsLayout = () => {
     return (
-        <div className="productPage">
+        <div className="productPage" style={{marginTop:"4em"}}>
             <ProductItem product={ prd} />
         </div>
     );
