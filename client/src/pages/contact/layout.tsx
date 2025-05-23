@@ -1,15 +1,13 @@
-import OfficeHours from "../../components/layouts/officeHours/officeHours";
+// import OfficeHours from "../../components/layouts/officeHours/officeHours";
 import ContactTextComponent from "../../components/layouts/contactTextComponent/contactTextComponent";
-import ContactForm from "../../components/layouts/contactForm/contactForm";
+// import ContactForm from "../../components/layouts/contactForm/contactForm";
+import ContactInformation from "../../components/layouts/ContactInformation/ContactInformation";
 
 const ContactLayout = () =>{
     return(
         <div>
             <ContactTextComponent/>
-            {/* TODO add <div> */}
-            <OfficeHours/>
-            <ContactForm/>
-            {/* TODO add </div> */}
+            <ContactInformation/>
         </div>
     );
 }
