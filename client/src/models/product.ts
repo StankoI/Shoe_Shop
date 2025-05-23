@@ -6,8 +6,9 @@ class Product {
     description: string;
     price: number;
     availability: number;
-    size:number;
+    sizes:number[];
     img: string;
+    colors:string[];
     categories: string[];
     createdAt: Date;
     updatedAt: Date;
@@ -17,8 +18,9 @@ class Product {
         _description: string,
         _price: number,
         _availability: number, 
-        _size:number,
+        _sizes:number[],
         _img: string,
+        _colors:string[],
         _categories: string[],
         _createdAt: Date,
         _updatedAt: Date) {
@@ -27,8 +29,9 @@ class Product {
         this.description = _description;
         this.price = _price;
         this.availability = _availability;
-        this.size = _size;
+        this.sizes = _sizes;
         this.img = _img;
+        this.colors = _colors;
         this.categories = _categories;
         this.createdAt = _createdAt;
         this.updatedAt = _updatedAt;

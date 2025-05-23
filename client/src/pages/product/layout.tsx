@@ -18,8 +18,9 @@ const prd: Product = {
     description: "Леки и удобни маратонки за ежедневна употреба.",
     price: 199.99,
     availability: 12,
-    size: 42,
+    sizes: [41,42,43,44],
     img: "../../../public/placeholder.svg",
+    colors: ["blue", "yellow", "white"],
     categories: ["мъжки", "обувки", "спортни"],
     createdAt: new Date(Date.now()),
     updatedAt: new Date(Date.now())
