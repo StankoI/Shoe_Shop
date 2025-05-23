@@ -6,29 +6,34 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     description: {
-        type:String
+        type: String
     },
     price: {
         type: Number,
         required: true
     },
-    availability: {
-        type: Number,
-        default: 0
-    },
-    size: {
-        type:Number
-    },
     img: {
-        type:String
+        type: String
     },
-    categories: 
-    {
-        type: [String]
-    },
-    ratingsIds: [{
+    categories: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Ratings'
+        ref: 'Category'
+    }],
+    color: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Color'
+    },
+    in_stock: {
+        type: [{
+            size: Number,
+            quantity: Number
+        }],
+        default: []
+    },
+    ratings_ids: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Rating',
+        default: []
     }]
 }, {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
