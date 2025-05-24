@@ -34,11 +34,11 @@ async function getAllProducts(req, res) {
             .select('_id name description price img categories color in_stock createdAt')
             .populate({
                 path: 'categories',
-                select: 'category -_id' 
+                select: 'category -_id'
             })
             .populate({
                 path: 'color',
-                select: 'color -_id' 
+                select: 'color -_id'
             });
 
         res.status(201).json(products);
@@ -48,4 +48,24 @@ async function getAllProducts(req, res) {
     }
 }
 
-module.exports = { addProduct, getAllProducts };
+async function addInStock(req, res) {
+    try {
+        const id = req.params.id;
+        const {
+            size,
+            quantity
+        } = req.body
+
+        const updatedProduct = await Product
+            .findByIdAndUpdate(
+                id,
+                { $push: { in_stock: { size, quantity } } },
+                { new: true });
+        res.status(201).json(updatedProduct);
+    }
+    catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+}
+
+module.exports = { addProduct, getAllProducts, addInStock };
