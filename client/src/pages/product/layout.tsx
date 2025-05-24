@@ -1,34 +1,42 @@
-import ProductItem from "../../components/product/productItem";
+import { useEffect, useState } from "react";
+import ProductList from "../../components/productList/productList";
 import Product from "../../models/product";
-
+import axios from 'axios'
 
 //     id: IdType;
 //     name: string;
 //     description: string;
 //     price: number;
-//     availability: number;
 //     img: string;
 //     categories: string[];
+//     color: string;
+//     in_stock: InStock[];
 //     createdAt: Date;
-//     updatedAt: Date;
-
-const prd: Product = {
-    id: "1",
-    name: "Nike Air Max 270",
-    description: "Леки и удобни маратонки за ежедневна употреба.",
-    price: 199.99,
-    availability: 12,
-    size: 42,
-    img: "../../../public/placeholder.svg",
-    categories: ["мъжки", "обувки", "спортни"],
-    createdAt: new Date(Date.now()),
-    updatedAt: new Date(Date.now())
-}
 
 const ProductsLayout = () => {
+
+    const [products, setProducts] = useState<Product[]>([])
+
+    useEffect(() => {
+        
+        axios.get('http://localhost:8080/client/products')
+            .then((res) => {
+                const productsWithId = res.data.map((prod: any) => ({
+                    ...prod,
+                    id: prod._id, 
+                    color: prod.color.color 
+                }));
+                setProducts(productsWithId);
+            })
+            .catch(err =>
+                console.error(err)
+            )
+
+    }, [])
+
     return (
-        <div className="productPage">
-            <ProductItem product={ prd} />
+        <div className="productPage" style={{ marginTop: "4em" }}>
+            <ProductList products={products} />
         </div>
     );
 }
