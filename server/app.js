@@ -25,7 +25,7 @@ app.use("/admin/color", AdminColorRouter);
 app.use("/admin/categories", AdminCategoriesRouter);
 
 //CLIENT ENDPOINTS
-app.use("client/products", ClientProductRouter);
+app.use("/client/products", ClientProductRouter);
 
 app.listen(PORT , () => {
     console.log(`App listening on port: ${PORT}`);

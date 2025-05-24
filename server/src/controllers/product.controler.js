@@ -1,4 +1,3 @@
-const product = require('../models/product');
 const Product = require('../models/product');
 
 async function addProduct(req, res) {
@@ -31,11 +30,21 @@ async function addProduct(req, res) {
 
 async function getAllProducts(req, res) {
     try {
-        const products = await Product.find();
+        const products = await Product.find()
+            .select('_id name description price img categories color in_stock createdAt')
+            .populate({
+                path: 'categories',
+                select: 'category -_id' 
+            })
+            .populate({
+                path: 'color',
+                select: 'color -_id' 
+            });
+
         res.status(201).json(products);
     }
     catch (err) {
-        res.status(404).json({ error: err.message });
+        res.status(400).json({ error: err.message });
     }
 }
 
