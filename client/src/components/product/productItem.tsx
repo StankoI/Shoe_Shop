@@ -13,7 +13,7 @@ const ProductItem = ({ product }: Props) => {
 
     return (
         <div>
-            {clicked && <ProductCard product={product} onClose={() => setClicked(false)} />}
+            {clicked && <ProductCard key={product.id} product={product} onClose={() => setClicked(false)} />}
             <div className={styles["container"]} onClick={() => { setClicked(true) }}>
                 <div className={styles["new"]}>New</div>
                 <div className={styles["eco"]}>Eco</div>
