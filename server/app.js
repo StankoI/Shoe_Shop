@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 
 const connectDB  = require('./src/config/db');
@@ -6,6 +7,8 @@ const app = express();
 connectDB();
 
 app.use(express.json());
+
+app.use(cors());
 
 const AdminProductRouter = require('./src/routes/admin/product.router')
 const AdminColorRouter = require('./src/routes/admin/color.router')
