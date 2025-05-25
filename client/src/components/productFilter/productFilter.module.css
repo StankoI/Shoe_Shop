@@ -1,0 +1,45 @@
+.title{
+    color:black;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    width: 300px;
+    background: white;
+    border: 1px solid gray;
+    align-self: start;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.text{
+    font-weight: 600;
+    font: size 20px;
+    color: black
+}
+
+.clean-all-btn{
+    color: black;
+    cursor: pointer;
+}
+
+.check-box{
+    color: black;
+}
+
+.categories-checkbox{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+
+.colors-checkbox{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
