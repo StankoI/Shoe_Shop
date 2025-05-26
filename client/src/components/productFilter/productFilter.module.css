@@ -1,5 +1,5 @@
-.title{
-    color:black;
+.title {
+    color: black;
     font-size: 24px;
     font-weight: 700;
 }
@@ -7,7 +7,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap: 10px;
     width: 300px;
     background: white;
     border: 1px solid gray;
@@ -16,30 +16,57 @@
     border-radius: 10px;
 }
 
-.text{
+.text {
     font-weight: 600;
     font: size 20px;
     color: black
 }
 
-.clean-all-btn{
+.clean-all-btn {
     color: black;
     cursor: pointer;
 }
 
-.check-box{
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    width: 100%;
+}
+
+.prices{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    color: black;
+    position: relative;
+}
+
+.max-price{
+    position: absolute;
+    right: 0;
+}
+
+.min-price{
+    position: absolute;
+    left: 5px;
+}
+
+.check-box {
     color: black;
 }
 
-.categories-checkbox{
+.categories-checkbox {
     display: flex;
     flex-direction: column;
-    gap:5px;
+    gap: 5px;
 }
 
 
-.colors-checkbox{
+.colors-checkbox {
     display: flex;
     flex-direction: column;
-    gap:5px;
+    gap: 5px;
 }

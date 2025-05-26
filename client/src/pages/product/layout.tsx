@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ProductList from "../../components/productList/productList";
 import Product from "../../models/product";
 import axios from 'axios'
@@ -18,16 +18,24 @@ import "./product.css"
 const ProductsLayout = () => {
     const [filter, setFilter] = useState<string[]>([]);
     const [categoriesFilter, SetCategoriesFilter] = useState<string[]>([]);
+    const [valueFilter, SetValueFilter] = useState(0);
     const [products, setProducts] = useState<Product[]>([]);
-    const [filteredProducts, setFilteredProducts] = useState(products);
+    // const [filteredProducts, setFilteredProducts] = useState(products);
 
-    useEffect(() => {
-        setFilteredProducts(filterProductsByColor(products, filter));
-    }, [filter, products])
+    const filteredProds = useMemo(
+        () => {
+            const temp = filterProductsByColor(products, filter)
+            const temp2 = filterProductsByCategory(temp, categoriesFilter);
+            return filterProductsByValue(temp2, valueFilter);
+        },[products, filter, categoriesFilter, valueFilter])
 
-    useEffect(() => {
-        setFilteredProducts(filterProductsByCategory(products,categoriesFilter));
-    }, [categoriesFilter, products])
+    // useEffect(() => {
+    //     setFilteredProducts(filterProductsByColor(products, filter));
+    // }, [filter, products])
+
+    // useEffect(() => {
+    //     setFilteredProducts(filterProductsByCategory(products, categoriesFilter));
+    // }, [categoriesFilter, products])
 
     useEffect(() => {
 
@@ -54,17 +62,23 @@ const ProductsLayout = () => {
 
     function filterProductsByCategory(products: Product[], filters: string[]) {
         return products.filter(
-            prod => filters.length === 0 || 
-            prod.categories.some(el => filters.includes(el))
+            prod => filters.length === 0 ||
+                prod.categories.some(el => filters.includes(el))
         )
     }
 
+    function filterProductsByValue(products: Product[], filter: number){
+        return products.filter(prod => prod.price >= filter);
+    }
 
     return (
         <div className="productPage" style={{ marginTop: "4em" }}>
             <div className="main">
-                <ProductFilter onFilterChangeColors={setFilter} onFilterChangeCategories={SetCategoriesFilter}/>
-                <ProductList products={filteredProducts} />
+                <ProductFilter 
+                    onFilterChangeColors={setFilter} 
+                    onFilterChangeCategories={SetCategoriesFilter} 
+                    onFilterChangeValue={SetValueFilter}/>
+                <ProductList products={filteredProds} />
             </div>
         </div>
     );

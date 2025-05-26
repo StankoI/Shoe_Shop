@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import styles from "./productFilter.module.css"
 import axios from "axios";
 import { IdType } from "../../types/idType";
@@ -17,14 +17,17 @@ type Category = {
 type Props = {
     onFilterChangeColors: (filters: string[]) => void;
     onFilterChangeCategories: (filtersCategories: string[]) => void;
+    onFilterChangeValue: (priceFilter: number) => void;
 }
 
-const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories }: Props) => {
+const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories, onFilterChangeValue }: Props) => {
     const [checkedListColors, setCheckedListColors] = useState<string[]>([]);
     const [colors, setColors] = useState<Color[]>([]);
 
     const [checkedListCategories, setCheckedListCategories] = useState<string[]>([]);
     const [categories, setCategories] = useState<Category[]>([]);
+
+    const [priceValue, setPriceValue] = useState(0);
 
     useEffect(() => {
         axios.get('http://localhost:8080/client/color')
@@ -36,7 +39,7 @@ const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories }: Props
             .then((res) => {
                 setCategories(res.data);
             })
-    })
+    },[])
 
     useEffect(() => {
         onFilterChangeColors(checkedListColors);
@@ -45,6 +48,10 @@ const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories }: Props
     useEffect(() => {
         onFilterChangeCategories(checkedListCategories)
     }, [checkedListCategories])
+
+    useEffect(() => {
+        onFilterChangeValue(priceValue)
+    }, [priceValue])
 
     const changeFilter = (event: ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
@@ -72,11 +79,24 @@ const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories }: Props
         }
     }
 
+    const changeValue = (event: ChangeEvent<HTMLInputElement>) => {
+        const value = parseInt(event.target.value);
+        setPriceValue(value);
+    }
 
     return (
         <div className={styles["container"]}>
             <div className={styles["title"]}>Filters</div>
             <div className={styles["clean-all-btn"]}>clean all</div>
+            <div className={styles["slidecontainer"]}>
+                <div className={styles["text"]}>Price Range</div>
+                <input type="range" min="0" max="200" value={priceValue} className={styles["slider"]} id="myRange" onChange={changeValue} />
+                <label htmlFor="myRange"></label>
+                <div className={styles["prices"]}>
+                    <div className={styles["min-price"]}>{priceValue}</div>
+                    <div className={styles["max-price"]}>200</div>
+                </div>
+            </div>
             <div className={styles["text"]}>Categories</div>
             <div className={styles["categories-checkbox"]}>
                 {categories.map((category) => {
