@@ -27,7 +27,9 @@ const ProductsLayout = () => {
             const temp = filterProductsByColor(products, filter)
             const temp2 = filterProductsByCategory(temp, categoriesFilter);
             return filterProductsByValue(temp2, valueFilter);
-        },[products, filter, categoriesFilter, valueFilter])
+        },[products, filter, categoriesFilter, valueFilter]
+    )
+
 
     // useEffect(() => {
     //     setFilteredProducts(filterProductsByColor(products, filter));
@@ -44,14 +46,15 @@ const ProductsLayout = () => {
                 const productsWithId = res.data.map((prod: any) => ({
                     ...prod,
                     id: prod._id,
-                    color: prod.color.color
+                    // color: prod.color.color,
+                    // categories: prod.categories.map((cat: any) => cat.category),
                 }));
                 setProducts(productsWithId);
+                // console.log(res.data)
             })
             .catch(err =>
                 console.error(err)
             )
-
     }, [])
 
     function filterProductsByColor(products: Product[], filters: string[]) {

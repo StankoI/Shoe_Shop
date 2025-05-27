@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import styles from "./productFilter.module.css"
 import axios from "axios";
 import { IdType } from "../../types/idType";
@@ -40,6 +40,8 @@ const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories, onFilte
                 setCategories(res.data);
             })
     },[])
+
+    
 
     useEffect(() => {
         onFilterChangeColors(checkedListColors);
@@ -84,10 +86,16 @@ const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories, onFilte
         setPriceValue(value);
     }
 
+    const cleanAll = () => {
+        setCheckedListCategories([]);
+        setCheckedListColors([]);
+        setPriceValue(0);
+    }
+
     return (
         <div className={styles["container"]}>
             <div className={styles["title"]}>Filters</div>
-            <div className={styles["clean-all-btn"]}>clean all</div>
+            <div className={styles["clean-all-btn"]} onClick={() => cleanAll()}>clean all</div>
             <div className={styles["slidecontainer"]}>
                 <div className={styles["text"]}>Price Range</div>
                 <input type="range" min="0" max="200" value={priceValue} className={styles["slider"]} id="myRange" onChange={changeValue} />
@@ -108,6 +116,7 @@ const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories, onFilte
                                 name="colors"
                                 value={category.category}
                                 onChange={changeFilterCategories}
+                                checked={checkedListCategories.includes(category.category)}
                             ></input>
                             <label htmlFor={category._id}>{category.category}</label>
                         </div>
@@ -125,6 +134,7 @@ const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories, onFilte
                                 type="checkbox"
                                 name="colors"
                                 value={color.color}
+                                checked={checkedListColors.includes(color.color)}
                                 onChange={changeFilter}
                             ></input>
                             <label htmlFor={color._id}>{color.color}</label>
