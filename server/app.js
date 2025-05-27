@@ -15,6 +15,9 @@ const AdminColorRouter = require('./src/routes/admin/color.router')
 const AdminCategoriesRouter = require('./src/routes/admin/categories.router')
 
 const ClientProductRouter = require('./src/routes/client/product.router')
+const ClientColorRouter = require('./src/routes/client/color.router')
+const ClientCategoryRouter = require('./src/routes/client/category.router')
+
 
 const PORT = process.env.PORT || 8080;
 
@@ -29,6 +32,10 @@ app.use("/admin/categories", AdminCategoriesRouter);
 
 //CLIENT ENDPOINTS
 app.use("/client/products", ClientProductRouter);
+app.use("/client/color", ClientColorRouter);
+app.use("/client/category", ClientCategoryRouter);
+
+
 
 app.listen(PORT , () => {
     console.log(`App listening on port: ${PORT}`);

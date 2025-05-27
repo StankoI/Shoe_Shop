@@ -39,9 +39,16 @@ async function getAllProducts(req, res) {
             .populate({
                 path: 'color',
                 select: 'color -_id'
-            });
+            }).lean();
 
-        res.status(201).json(products);
+             
+        const modifiedProducts = products.map(product => ({
+            ...product,
+            categories: product.categories.map(cat => cat.category), 
+            color: product.color?.color || null 
+        }));
+
+        res.status(200).json(modifiedProducts);
     }
     catch (err) {
         res.status(400).json({ error: err.message });
