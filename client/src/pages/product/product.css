@@ -20,3 +20,12 @@
     padding: 30px;
     box-sizing: border-box;
 }
+
+
+@media(max-width: 768px)
+{
+    .filterAndProducts{
+        flex-direction: column;
+        z-index: 1000;
+    }
+}

@@ -16,9 +16,6 @@ const useDevice = (): DeviceType=> {
             setDevice(getDeviceType())
         }
         window.addEventListener('resize', handleResize);
-
-        // return removeEventListener('resize', handleResize);
-
     },[]);
 
     return device;

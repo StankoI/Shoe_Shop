@@ -1,22 +1,97 @@
-
-.searchbar-container{
+.searchbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     width: 100%;
-    padding: 0px 30px ;
+    padding: 0px 30px;
     box-sizing: border-box;
-    margin-top:10px;
+    margin-top: 10px;
+    gap:20px;
 }
 
-.searchbar{
-    position: relative;
+.searchbar {
+    /* position: relative; */
+    width: 50%;
 }
 
-.search{
-    width: 40%;
+.search {
+    min-width: 300px;
+    width: 80%;
     border-radius: 30px;
     border: solid 1px rgb(213, 213, 213);
-    color:black;
+    color: black;
     padding: 10px;
     box-sizing: border-box;
     background: white;
     font-size: 17px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.search:focus {
+    box-shadow: 0 0 0 2px rgb(9, 213, 84);
+}
+
+.dropdown {
+  position: relative;
+  z-index: 1000; 
+  pointer-events: auto; 
+}
+
+.dropdown select{
+    padding: 10px 16px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dropdown select:focus {
+    box-shadow: 0 0 0 2px rgb(9, 213, 84);
+    outline: none;
+}
+
+.wrapper{
+    display: flex;
+    gap:20px;
+}
+
+.filter-btn {
+    padding: 10px 16px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s;
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1000; 
+  
+}
+
+@media(max-width:768px) {
+    .searchbar-container {
+        flex-direction: column;
+    }
+
+    .searchbar {
+        width: 100%;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .wrapper {
+        align-self: flex-start;
+    }
 }

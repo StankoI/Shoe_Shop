@@ -4,7 +4,8 @@ import Product from "../../models/product";
 import axios from 'axios'
 import ProductFilter from "../../components/productFilter/productFilter";
 import "./product.css"
-import Searchbar from "../../components/searchbar/searhcbar";
+import Searchbar, { sortTypes } from "../../components/searchbar/searhcbar";
+import useDevice from "../../hooks/useDevice";
 
 //     id: IdType;
 //     name: string;
@@ -22,15 +23,21 @@ const ProductsLayout = () => {
     const [valueFilter, SetValueFilter] = useState(0);
     const [products, setProducts] = useState<Product[]>([]);
     const [searchInfix, setSerchInfix] = useState('');
+    const [sortType, setSortType] = useState<sortTypes>(sortTypes.none);
 
     const filteredProds = useMemo(
         () => {
             const temp = filterProductsByColor(products, filter)
             const temp2 = filterProductsByCategory(temp, categoriesFilter);
             const temp3 = filterProductsByValue(temp2, valueFilter);
-            return searchProducts(temp3, searchInfix);
-        }, [products, filter, categoriesFilter, valueFilter, searchInfix]
+            const temp4 = searchProducts(temp3, searchInfix);
+            return sortBy(temp4, sortType);
+        }, [products, filter, categoriesFilter, valueFilter, searchInfix, sortType]
     )
+
+    const [visibleFilter, setVisibleFilter] = useState(false);
+
+    const device = useDevice();
 
     useEffect(() => {
 
@@ -39,11 +46,8 @@ const ProductsLayout = () => {
                 const productsWithId = res.data.map((prod: any) => ({
                     ...prod,
                     id: prod._id,
-                    // color: prod.color.color,
-                    // categories: prod.categories.map((cat: any) => cat.category),
                 }));
                 setProducts(productsWithId);
-                // console.log(res.data)
             })
             .catch(err =>
                 console.error(err)
@@ -68,21 +72,38 @@ const ProductsLayout = () => {
     }
 
     function searchProducts(products: Product[], infix: string) {
-    const searchInfix = infix.toLowerCase().trim().replace(/\s+/g, ' ');
-    return products.filter(prod =>
-        prod.name.toLowerCase().includes(searchInfix)
-    );
-}
+        const searchInfix = infix.toLowerCase().trim().replace(/\s+/g, ' ');
+        return products.filter(prod =>
+            prod.name.toLowerCase().includes(searchInfix)
+        );
+    }
+
+    function sortBy(products: Product[], sortWay: sortTypes) {
+        if (sortWay === 0) {
+            return products;
+        }
+        else if (sortWay === 1) {
+            return products.sort((a, b) => b.price - a.price);
+        }
+        else {
+            return products.sort((a, b) => a.price - b.price);
+        }
+    }
 
     return (
         <div className="productPage" style={{ marginTop: "4em" }}>
             <div className="main">
-                <Searchbar onChangeSearch={setSerchInfix} />
+                <Searchbar onChangeSearch={setSerchInfix} onChangeSort={setSortType} onSetVisible={setVisibleFilter} />
                 <div className="filterAndProducts">
-                    <ProductFilter
-                        onFilterChangeColors={setFilter}
-                        onFilterChangeCategories={SetCategoriesFilter}
-                        onFilterChangeValue={SetValueFilter} />
+
+                    {(device === "pc" || visibleFilter === true) &&
+                        <ProductFilter
+                            onFilterChangeColors={setFilter}
+                            onFilterChangeCategories={SetCategoriesFilter}
+                            onFilterChangeValue={SetValueFilter} 
+                            onCloseFilter={setVisibleFilter}
+                        />
+                    }
                     <ProductList products={filteredProds} />
                 </div>
             </div>
