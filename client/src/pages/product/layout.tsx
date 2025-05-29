@@ -4,6 +4,7 @@ import Product from "../../models/product";
 import axios from 'axios'
 import ProductFilter from "../../components/productFilter/productFilter";
 import "./product.css"
+import Searchbar from "../../components/searchbar/searhcbar";
 
 //     id: IdType;
 //     name: string;
@@ -20,24 +21,16 @@ const ProductsLayout = () => {
     const [categoriesFilter, SetCategoriesFilter] = useState<string[]>([]);
     const [valueFilter, SetValueFilter] = useState(0);
     const [products, setProducts] = useState<Product[]>([]);
-    // const [filteredProducts, setFilteredProducts] = useState(products);
+    const [searchInfix, setSerchInfix] = useState('');
 
     const filteredProds = useMemo(
         () => {
             const temp = filterProductsByColor(products, filter)
             const temp2 = filterProductsByCategory(temp, categoriesFilter);
-            return filterProductsByValue(temp2, valueFilter);
-        },[products, filter, categoriesFilter, valueFilter]
+            const temp3 = filterProductsByValue(temp2, valueFilter);
+            return searchProducts(temp3, searchInfix);
+        }, [products, filter, categoriesFilter, valueFilter, searchInfix]
     )
-
-
-    // useEffect(() => {
-    //     setFilteredProducts(filterProductsByColor(products, filter));
-    // }, [filter, products])
-
-    // useEffect(() => {
-    //     setFilteredProducts(filterProductsByCategory(products, categoriesFilter));
-    // }, [categoriesFilter, products])
 
     useEffect(() => {
 
@@ -70,18 +63,28 @@ const ProductsLayout = () => {
         )
     }
 
-    function filterProductsByValue(products: Product[], filter: number){
+    function filterProductsByValue(products: Product[], filter: number) {
         return products.filter(prod => prod.price >= filter);
     }
+
+    function searchProducts(products: Product[], infix: string) {
+    const searchInfix = infix.toLowerCase().trim().replace(/\s+/g, ' ');
+    return products.filter(prod =>
+        prod.name.toLowerCase().includes(searchInfix)
+    );
+}
 
     return (
         <div className="productPage" style={{ marginTop: "4em" }}>
             <div className="main">
-                <ProductFilter 
-                    onFilterChangeColors={setFilter} 
-                    onFilterChangeCategories={SetCategoriesFilter} 
-                    onFilterChangeValue={SetValueFilter}/>
-                <ProductList products={filteredProds} />
+                <Searchbar onChangeSearch={setSerchInfix} />
+                <div className="filterAndProducts">
+                    <ProductFilter
+                        onFilterChangeColors={setFilter}
+                        onFilterChangeCategories={SetCategoriesFilter}
+                        onFilterChangeValue={SetValueFilter} />
+                    <ProductList products={filteredProds} />
+                </div>
             </div>
         </div>
     );

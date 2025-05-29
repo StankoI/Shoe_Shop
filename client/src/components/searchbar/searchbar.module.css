@@ -1,0 +1,22 @@
+
+.searchbar-container{
+    width: 100%;
+    padding: 0px 30px ;
+    box-sizing: border-box;
+    margin-top:10px;
+}
+
+.searchbar{
+    position: relative;
+}
+
+.search{
+    width: 40%;
+    border-radius: 30px;
+    border: solid 1px rgb(213, 213, 213);
+    color:black;
+    padding: 10px;
+    box-sizing: border-box;
+    background: white;
+    font-size: 17px;
+}
