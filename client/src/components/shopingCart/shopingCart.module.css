@@ -1,0 +1,43 @@
+
+.container {
+    width: 100%;
+    padding: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.cartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+}
+
+.cartTitle {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #212529;
+}
+
+.clearCartButton {
+    background: none;
+    border: none;
+    color: #6c757d;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.clearCartButton:hover {
+    color: #212529;
+}
+
+/* Списък с продукти */
+.cartItemsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Разстояние между продуктите */
+}
+
