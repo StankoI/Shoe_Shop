@@ -93,7 +93,7 @@
     color: white;
 }
 
-.shoping-cart-button {
+.shoping-cart-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -103,6 +103,10 @@
     position: relative;
     font-size: 1.2rem;
     cursor: pointer;
+}
+
+.shoping-cart-btn.selected{
+    background: #48d77c;
 }
 
 .shoping-cart-icon{
@@ -302,6 +306,8 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s;
+    text-decoration: none;
+    color:white;
 }
 
 .shoping-cart-icon-M{

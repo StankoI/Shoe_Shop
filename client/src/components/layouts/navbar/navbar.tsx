@@ -10,7 +10,6 @@ import { useShoppingCart } from "../../../contexts/shopingCartContext";
 const Navbar = () => {
 
     const {cartQuantity} = useShoppingCart();
-    const [productsInCart, setProductsInCart] = useState(0);
     const [clicked, setClicked] = useState(false);
     const device = useDevice();
 
@@ -72,7 +71,9 @@ const Navbar = () => {
 
                         <NavLink
                             to="/shopingCart"
-                             className={styles["shoping-cart-button"]}>
+                             className={({ isActive }) =>
+                                `${styles["shoping-cart-btn"]} ${isActive ? styles["selected"] : ""}`
+                            }>
                             <CiShoppingBasket className={styles["shoping-cart-icon"]} />
                             <div
                                 className={`${styles["shoping-cart-notification"]} ${cartQuantity === 0 ? styles["invisible"] : ""
@@ -167,7 +168,7 @@ const Navbar = () => {
                             className={styles["shoping-cart-buttonM"]}
                             onClick={() => setClicked(false)}
                         >
-                            Cart {productsInCart === 0 ? "" : `(${productsInCart})`}
+                            Cart {cartQuantity === 0 ? "" : `(${cartQuantity})`}
                             <CiShoppingBasket className={styles["shoping-cart-icon-M"]} />
                         </NavLink>
                     </div>

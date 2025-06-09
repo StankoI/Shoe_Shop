@@ -1,9 +1,10 @@
 import OrderSummary from "../../components/orderSummary/orderSummary";
 import ShopingCart from "../../components/shopingCart/shopingCart";
+import styles from "./shopingCart.module.css"
 
 const ShopingCartLayout = () => {
     return(
-        <div style={{ marginTop:"4em", display:"flex", padding:"20px", gap:"10px" }}>
+        <div className={styles["container"]} >
             <ShopingCart/>
             <OrderSummary/>
         </div>

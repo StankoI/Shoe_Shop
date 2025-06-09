@@ -49,7 +49,7 @@ const CartItemTSX = ({ id, quantity, size }: Props) => {
                     <div className={styles["quantityControl"]}>
                         <button onClick={() => decreaseCartQuantity(id, size)} className={styles["quantityButton"]}>-</button>
                         <div className={styles["quantityValue"]}>{quantity}</div>
-                        <button onClick={() => increaseCartQuantity(id,1, size)} className={styles["quantityButton"]}>+</button>
+                        <button onClick={() => increaseCartQuantity(id, 1, size)} className={styles["quantityButton"]}>+</button>
                     </div>
                     <button className={styles["actionLink"]} onClick={() => removeFromCart(id, size)}>
                         Remove
