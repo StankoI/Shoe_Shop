@@ -5,6 +5,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import { LuUserPlus } from "react-icons/lu";
 import axios from "axios";
+import bcrypt from "bcryptjs";
+// var bcrypt = require('bcryptjs');
+// var salt = bcrypt.genSaltSync(10);
 
 const RegisterComponent = () => {
 
@@ -40,7 +43,6 @@ const RegisterComponent = () => {
     }
 
     const handleSubmit = async (e: React.FormEvent) => {
-
         e.preventDefault();
 
         if (formData.password !== formData.confirmPassword) {
@@ -54,8 +56,9 @@ const RegisterComponent = () => {
         }
 
         const registerData = {
-            ...formData
+            ...formData,
         }
+
 
         try {
             await axios.post('http://localhost:8080/client/user', registerData);
