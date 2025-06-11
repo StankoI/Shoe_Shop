@@ -10,6 +10,10 @@ app.use(express.json());
 
 app.use(cors());
 
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
+
 const AdminProductRouter = require('./src/routes/admin/product.router')
 const AdminColorRouter = require('./src/routes/admin/color.router')
 const AdminCategoriesRouter = require('./src/routes/admin/categories.router')
@@ -17,6 +21,8 @@ const AdminCategoriesRouter = require('./src/routes/admin/categories.router')
 const ClientProductRouter = require('./src/routes/client/product.router')
 const ClientColorRouter = require('./src/routes/client/color.router')
 const ClientCategoryRouter = require('./src/routes/client/category.router')
+const ClientLoginRouter = require('./src/routes/client/auth.router')
+const CLientRefreshRouter = require('./src/routes/client/refresh.router')
 
 
 const PORT = process.env.PORT || 8080;
@@ -34,7 +40,8 @@ app.use("/admin/categories", AdminCategoriesRouter);
 app.use("/client/products", ClientProductRouter);
 app.use("/client/color", ClientColorRouter);
 app.use("/client/category", ClientCategoryRouter);
-
+app.use("/client/login", ClientLoginRouter);
+app.use("/client/refresh", CLientRefreshRouter);
 
 
 app.listen(PORT , () => {
