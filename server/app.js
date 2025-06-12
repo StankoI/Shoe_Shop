@@ -8,7 +8,10 @@ connectDB();
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
 
 const cookieParser = require('cookie-parser');
 
@@ -22,7 +25,8 @@ const ClientProductRouter = require('./src/routes/client/product.router')
 const ClientColorRouter = require('./src/routes/client/color.router')
 const ClientCategoryRouter = require('./src/routes/client/category.router')
 const ClientLoginRouter = require('./src/routes/client/auth.router')
-const CLientRefreshRouter = require('./src/routes/client/refresh.router')
+const ClientRefreshRouter = require('./src/routes/client/refresh.router')
+const ClientLogoutRouter = require('./src/routes/client/logout.router')
 
 
 const PORT = process.env.PORT || 8080;
@@ -41,7 +45,8 @@ app.use("/client/products", ClientProductRouter);
 app.use("/client/color", ClientColorRouter);
 app.use("/client/category", ClientCategoryRouter);
 app.use("/client/login", ClientLoginRouter);
-app.use("/client/refresh", CLientRefreshRouter);
+app.use("/client/refresh", ClientRefreshRouter);
+app.use("/client/logout", ClientLogoutRouter)
 
 
 app.listen(PORT , () => {

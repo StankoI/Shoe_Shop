@@ -8,23 +8,36 @@ import ProductPage from './pages/product'
 import Footer from './components/layout/footer/footer';
 import Navbar from './components/layouts/navbar/navbar';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import { AuthProvider } from './context/authProvider';
+import PublicRoute from './routes/publicRoutes';
 
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
-        <ScrollToTop/>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/products" element={<ProductPage />} />
-        </Routes>
-        <Footer/>
+        <AuthProvider>
+          <Navbar />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/login" element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            } />
+
+            <Route path="/register" element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            } />
+            <Route path="/products" element={<ProductPage />} />
+          </Routes>
+          <Footer />
+        </AuthProvider>
       </Router>
     </>
   )
