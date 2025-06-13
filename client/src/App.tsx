@@ -8,7 +8,7 @@ import ProductPage from './pages/product'
 import Footer from './components/layout/footer/footer';
 import Navbar from './components/layouts/navbar/navbar';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
-import { AuthProvider } from './context/authProvider';
+import { AuthProvider } from './contexts/authProvider';
 import PublicRoute from './routes/publicRoutes';
 import ShopingCartPage from './pages/shopingCart';
 import { ShoppingCartProvider } from './contexts/shopingCartContext';
