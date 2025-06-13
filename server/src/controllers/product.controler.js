@@ -1,3 +1,4 @@
+const color = require('../models/color');
 const Product = require('../models/product');
 
 async function addProduct(req, res) {
@@ -41,17 +42,52 @@ async function getAllProducts(req, res) {
                 select: 'color -_id'
             }).lean();
 
-             
+
         const modifiedProducts = products.map(product => ({
             ...product,
-            categories: product.categories.map(cat => cat.category), 
-            color: product.color?.color || null 
+            categories: product.categories.map(cat => cat.category),
+            color: product.color?.color || null
         }));
 
         res.status(200).json(modifiedProducts);
     }
     catch (err) {
         res.status(400).json({ error: err.message });
+    }
+}
+
+async function getProduct(req, res) {
+    try {
+        const id = req.params.id;
+        const product = await Product.findById(id)
+            .select('name price img color')
+            .populate({
+                path: 'color',
+                select: 'color -_id'
+            }).lean();
+
+        const modifiedProduct = {
+            ...product,
+            color: product.color?.color || null
+        }
+            
+        res.status(200).json(modifiedProduct);
+    }
+    catch(err){
+        res.status(400).json({error: err.message})
+    }
+}
+
+async function getProductPrice(req, res) {
+    try{
+        const id = req.params.id;
+        const product = await Product.findById(id)
+        .select('price')
+
+        res.status(200).json(product)
+    }
+    catch(err){
+        res.status(400).json({error:err.message})
     }
 }
 
@@ -75,4 +111,4 @@ async function addInStock(req, res) {
     }
 }
 
-module.exports = { addProduct, getAllProducts, addInStock };
+module.exports = { addProduct, getAllProducts, addInStock, getProduct, getProductPrice};

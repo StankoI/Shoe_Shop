@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Product from "../../models/product";
 import styles from "./productCard.module.css"
+import { useShoppingCart } from "../../contexts/shopingCartContext";
 
 type Props = {
     product: Product;
@@ -8,6 +9,10 @@ type Props = {
 }
 
 const ProductCard = ({ product, onClose }: Props) => {
+
+    const {
+        increaseCartQuantity,
+    } = useShoppingCart();
 
     const [quant, setQuant] = useState(1);
     const [selectedSize, setSelectedSize] = useState(0);
@@ -43,7 +48,10 @@ const ProductCard = ({ product, onClose }: Props) => {
                         <div className={styles["quantity"]}>{quant}</div>
                         <div className={styles["plus"]} onClick={() => { changeQuant(1) }}>+</div>
                     </div>
-                    <div className={styles["addToCartBtn"]}>Add to Cart</div>
+                    <div className={styles["addToCartBtn"]} onClick={() => {
+                        alert(`${product.name} беше добавен в количката`)
+                        increaseCartQuantity(product.id, quant, product.in_stock[selectedSize].size)
+                    }} >Add to Cart</div>
                     <div className={styles["categories"]}>
                         {product.categories.map((cat, index) => (
                             <div key={index} className={styles["category"]}>{cat}</div>
