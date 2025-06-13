@@ -21,8 +21,8 @@ router.post("/", async (req, res) => {
             totalPrice
         })
 
-        const savedProduct = await newOrder.save();
-        res.status(201).json(savedProduct);
+        const savedOrder = await newOrder.save();
+        res.status(201).json(savedOrder);
     }
     catch(err)
     {

@@ -1,0 +1,21 @@
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: solid 1px gray;
+    gap:20px;
+    justify-self: center;
+}
+
+.info-title{
+    font-weight: 600s;
+    color: black
+}
+
+.info{
+    color:black;
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+}

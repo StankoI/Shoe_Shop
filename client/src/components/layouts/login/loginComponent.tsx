@@ -54,6 +54,7 @@ const LoginComponent = () => {
                 phoneNumber:responce?.data?.user?.phoneNumber,
                 role:responce?.data?.user?.role,
                 password:formData.password,
+                address:responce?.data?.user?.address,
                 accessToken: responce?.data?.accessToken
             })
 

@@ -65,7 +65,8 @@ async function handleLogin(req, res) {
                 name: foundedUser.name,
                 email: foundedUser.email,
                 phoneNumber: foundedUser.phoneNumber,
-                role: foundedUser.role
+                role: foundedUser.role,
+                address:foundedUser.address
             }
         })
     }
