@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config()
 
 async function handleLogin(req, res) {
-    const { email, password } = req.body;
+    const { email, password, checked } = req.body;
     if (!email || !password) {
         return res.status(400).json({ "message": "email and password are required" });
     }
@@ -34,13 +34,13 @@ async function handleLogin(req, res) {
                 }
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '30s' }
+            { expiresIn: '10m' }
         )
 
         const refreshToken = jwt.sign(
             { "email": foundedUser.email },
             process.env.REFRESH_TOKEN_SECRET,
-            { expiresIn: '1d' }
+            { expiresIn: checked ? '30d' : '1d' }
         )
 
         const hashedToken = await bcrypt.hash(refreshToken, 10);
@@ -48,10 +48,16 @@ async function handleLogin(req, res) {
         await RefreshToken.create({
             token: hashedToken,
             userId: foundedUser._id,
-            expiresAt: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000)  // 1 den
+            expiresAt: new Date(Date.now() + (checked ? 30 * 24 * 60 * 60 * 1000 : 1 * 24 * 60 * 60 * 1000))
         });
 
-        res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 1 * 24 * 60 * 60 * 1000 })
+        res.cookie('jwt',
+            refreshToken,
+            {
+                httpOnly: true,
+                sameSite: 'None',
+                maxAge: (checked ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000)
+            })
 
         res.status(200).json({
             accessToken,
