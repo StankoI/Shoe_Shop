@@ -5,6 +5,7 @@
 }
 
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -14,6 +15,14 @@
     align-self: start;
     padding: 20px;
     border-radius: 10px;
+}
+
+.close-btn{
+    color: gray;
+    font-size: 20px;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
 }
 
 .text {
@@ -69,4 +78,10 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+@media(max-width: 768px){
+    .container{
+        width: 100%;
+    }
 }

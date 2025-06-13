@@ -10,20 +10,24 @@ import Navbar from './components/layouts/navbar/navbar';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { AuthProvider } from './context/authProvider';
 import PublicRoute from './routes/publicRoutes';
+import ShopingCartPage from './pages/shopingCart';
+import { ShoppingCartProvider } from './contexts/shopingCartContext';
+import CheckoutPage from './pages/checkout';
 
 
 function App() {
-  return (
-    <>
-      <Router>
-        <AuthProvider>
-          <Navbar />
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/login" element={
+    return (
+      <AuthProvider>
+        <ShoppingCartProvider>
+            <Router>
+                <Navbar />
+                <ScrollToTop />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+
+                    <Route path="/login" element={
               <PublicRoute>
                 <LoginPage />
               </PublicRoute>
@@ -34,13 +38,17 @@ function App() {
                 <RegisterPage />
               </PublicRoute>
             } />
-            <Route path="/products" element={<ProductPage />} />
-          </Routes>
-          <Footer />
+
+                    <Route path="/products" element={<ProductPage />} />
+                    <Route path="/shopingCart" element={<ShopingCartPage />} />
+                    <Route path="/checkout" element={<CheckoutPage/>}/>
+                </Routes>
+                <Footer />
+            </Router>
+        </ShoppingCartProvider>
         </AuthProvider>
-      </Router>
-    </>
-  )
+    )
+
 }
 
-export default App
+export default App;

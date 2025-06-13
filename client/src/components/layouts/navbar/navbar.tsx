@@ -7,10 +7,11 @@ import { CiShoppingBasket } from "react-icons/ci";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import useAuth from "../../../hooks/useAuth";
 import useLogout from "../../../hooks/useLogout";
+import { useShoppingCart } from "../../../contexts/shopingCartContext";
 
 const Navbar = () => {
 
-    const [productsInCart, setProductsInCart] = useState(0);
+    const {cartQuantity} = useShoppingCart();
     const [clicked, setClicked] = useState(false);
     const device = useDevice();
     const logout = useLogout();
@@ -82,15 +83,20 @@ const Navbar = () => {
                             </NavLink>
                         )}
 
-                        <div className={styles["shoping-cart-button"]}>
+                        <NavLink
+                            to="/shopingCart"
+                             className={({ isActive }) =>
+                                `${styles["shoping-cart-btn"]} ${isActive ? styles["selected"] : ""}`
+                            }>
+
                             <CiShoppingBasket className={styles["shoping-cart-icon"]} />
                             <div
-                                className={`${styles["shoping-cart-notification"]} ${productsInCart === 0 ? styles["invisible"] : ""
+                                className={`${styles["shoping-cart-notification"]} ${cartQuantity === 0 ? styles["invisible"] : ""
                                     }`}
                             >
-                                {productsInCart}
+                                {cartQuantity}
                             </div>
-                        </div>
+                        </NavLink>
                     </div>
                 </div>
             </nav>
@@ -99,7 +105,8 @@ const Navbar = () => {
 
     const mobileNavbar = () => {
         return (
-            <div className={styles["container"]}>
+            // <div className={styles["container"]}>
+            <div className={`${styles["container"]} ${clicked ? "" : styles["invisible"]}`}>
                 <nav className={styles["navbarM"]}>
                     <div className={styles["nav-containerM"]}>
                         <div className={styles["nav-leftM"]}>
@@ -180,13 +187,14 @@ const Navbar = () => {
                             </NavLink>
                         )}
 
-                        <div
+                        <NavLink
+                            to="/shopingCart"
                             className={styles["shoping-cart-buttonM"]}
                             onClick={() => setClicked(false)}
                         >
-                            Cart {productsInCart === 0 ? "" : `(${productsInCart})`}
+                            Cart {cartQuantity === 0 ? "" : `(${cartQuantity})`}
                             <CiShoppingBasket className={styles["shoping-cart-icon-M"]} />
-                        </div>
+                        </NavLink>
                     </div>
                 </div>
             </div>
