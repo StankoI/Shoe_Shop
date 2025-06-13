@@ -1,0 +1,134 @@
+.cartItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.itemImage {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+
+.itemDetails {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 130px;
+}
+
+.itemName {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: #212529;
+}
+
+.itemSpecs {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin: 0.25rem 0 0;
+}
+
+.itemControls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+.quantityControl {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+}
+
+.quantityButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    font-size: 20px;
+    color: #495057;
+}
+
+.quantityValue {
+    padding: 0 8px;
+    font-weight: 500;
+    color: #495057;
+}
+
+.actionLink {
+    background: none;
+    border: none;
+    color: #6c757d;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.actionLink:hover {
+    text-decoration: underline;
+}
+
+.priceDetails {
+    text-align: right;
+    min-width: 100px;
+}
+
+.itemPrice {
+    font-size: 20px;
+    font-weight: 600;
+    color: #212529;
+    margin: 0;
+}
+
+.itemSubtotal {
+    font-size: 15px;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .cartItem {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .itemImage {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+    }
+
+    .itemControls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .quantityControl {
+        width: 50%;
+        justify-content: space-between;
+    }
+
+    .priceDetails {
+        text-align: left;
+        min-width: auto;
+    }
+
+    .itemDetails {
+        min-height: auto;
+    }
+}
