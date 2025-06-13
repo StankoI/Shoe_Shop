@@ -25,7 +25,7 @@ const AuthContext = createContext({} as AuthContextType);
 export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const [auth, setAuth] = useState<AuthData>(() => {
-        const storedAuth = sessionStorage.getItem("auth");
+        const storedAuth = localStorage.getItem("auth");
         return storedAuth ? JSON.parse(storedAuth) : {
             name: '',
             email: '',
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     });
 
     useEffect(() => {
-        sessionStorage.setItem("auth", JSON.stringify(auth));
+        localStorage.setItem("auth", JSON.stringify(auth));
     }, [auth]);
 
     return (

@@ -18,19 +18,26 @@ const LoginComponent = () => {
 
     const [formData, setFormData] = useState({
         email: '',
-        password: ''
+        password: '',
     })
+
+    const [checked, setChecked] = useState(false);
 
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }))
     }
 
+    const handleCheckChange = () => {
+        setChecked(prev => !prev)
+    }
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const loginData = {
-            ...formData
+            ...formData,
+            checked
         }
 
         try {
@@ -60,8 +67,10 @@ const LoginComponent = () => {
 
         setFormData({
             email: '',
-            password: ''
+            password: '',
         })
+
+        setChecked(false);
     }
 
     return (
@@ -109,7 +118,7 @@ const LoginComponent = () => {
                         </div>
                     </form>
                     <div className={styles["remember-mi-div"]}>
-                        <input type="checkbox" className={styles["checkbox"]}></input>
+                        <input type="checkbox" className={styles["checkbox"]} checked={checked} onChange={handleCheckChange}></input>
                         Remember me for 30 days
                     </div>
                     <div className={styles["sign-in-btn"]} onClick={handleSubmit}>
