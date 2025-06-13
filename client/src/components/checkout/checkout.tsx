@@ -3,14 +3,18 @@ import { useShoppingCart } from '../../contexts/shopingCartContext';
 import styles from './Checkout.module.css';
 import axios from 'axios';
 import CartItemTSX from '../cartItem/cartItem';
+import useAuth from '../../hooks/useAuth';
 
 const Checkout = () => {
     const { cartItems, cleanCart } = useShoppingCart();
     const [subtotal, setSubtotal] = useState(0);
+
+    const {auth} = useAuth()
+
     const [formData, setFormData] = useState({
-        name: '',
+        name: auth.name,
         address: '',
-        phoneNumber: ''
+        phoneNumber: auth.phoneNumber
     });
 
 
