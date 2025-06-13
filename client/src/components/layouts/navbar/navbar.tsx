@@ -5,6 +5,8 @@ import useDevice from "../../../hooks/useDevice";
 import Logo from "../icons/icons"
 import { CiShoppingBasket } from "react-icons/ci";
 import { FaArrowRightToBracket } from "react-icons/fa6";
+import useAuth from "../../../hooks/useAuth";
+import useLogout from "../../../hooks/useLogout";
 import { useShoppingCart } from "../../../contexts/shopingCartContext";
 
 const Navbar = () => {
@@ -12,6 +14,10 @@ const Navbar = () => {
     const {cartQuantity} = useShoppingCart();
     const [clicked, setClicked] = useState(false);
     const device = useDevice();
+    const logout = useLogout();
+
+    const { auth } = useAuth();
+    const isLoggedIn = auth?.accessToken;
 
     const handleClick = () => {
         setClicked(clicked => !clicked)
@@ -59,21 +65,30 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className={styles["actions"]}>
-                        <NavLink
-                            to="/login"
-                            className={({ isActive }) =>
-                                `${styles["login-btn"]} ${isActive ? styles["selected"] : ""}`
-                            }
-                        >
-                            <FaArrowRightToBracket />
-                            Login
-                        </NavLink>
+                        {isLoggedIn ? (<>
+                            <div className={styles["greeting"]}>
+                                Hello, {auth.name || "User"}
+                            </div>
+                            <div className={styles["logout-btn"]} onClick={logout}>logout</div>
+                        </>
+                        ) : (
+                            <NavLink
+                                to="/login"
+                                className={({ isActive }) =>
+                                    `${styles["login-btn"]} ${isActive ? styles["selected"] : ""}`
+                                }
+                            >
+                                <FaArrowRightToBracket />
+                                Login
+                            </NavLink>
+                        )}
 
                         <NavLink
                             to="/shopingCart"
                              className={({ isActive }) =>
                                 `${styles["shoping-cart-btn"]} ${isActive ? styles["selected"] : ""}`
                             }>
+
                             <CiShoppingBasket className={styles["shoping-cart-icon"]} />
                             <div
                                 className={`${styles["shoping-cart-notification"]} ${cartQuantity === 0 ? styles["invisible"] : ""
@@ -153,16 +168,24 @@ const Navbar = () => {
                     </NavLink>
 
                     <div className={styles["actionsM"]}>
-                        <NavLink
-                            to="/login"
-                            className={({ isActive }) =>
-                                `${styles["login-btnM"]} ${isActive ? styles["selected"] : ""}`
-                            }
-                            onClick={() => setClicked(false)}
-                        >
-                            <FaArrowRightToBracket />
-                            Login
-                        </NavLink>
+                        {isLoggedIn ? (<>
+                            <div className={styles["greetingM"]}>
+                                Hello, {auth.name || "User"}
+                            </div>
+                            <div className={styles["logout-btn"]} onClick={logout}>logout</div>
+                        </>
+                        ) : (
+                            <NavLink
+                                to="/login"
+                                className={({ isActive }) =>
+                                    `${styles["login-btnM"]} ${isActive ? styles["selected"] : ""}`
+                                }
+                                onClick={() => setClicked(false)}
+                            >
+                                <FaArrowRightToBracket />
+                                Login
+                            </NavLink>
+                        )}
 
                         <NavLink
                             to="/shopingCart"

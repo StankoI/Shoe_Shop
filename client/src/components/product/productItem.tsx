@@ -12,7 +12,7 @@ const ProductItem = ({ product }: Props) => {
     const [clicked, setClicked] = useState(false);
 
     return (
-        <div>
+        <>
             {clicked && <ProductCard key={product.id} product={product} onClose={() => setClicked(false)} />}
             <div className={styles["container"]} onClick={() => { setClicked(true) }}>
                 <div className={styles["new"]}>New</div>
@@ -24,7 +24,7 @@ const ProductItem = ({ product }: Props) => {
                     <div className={styles["price"]}>{product.price}</div>
                 </div>
             </div>
-        </div>
+        </>
     );
 
 }
