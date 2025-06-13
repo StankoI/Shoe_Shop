@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -6,7 +6,7 @@ body {
     overflow-x: hidden;
 }
 
-.register-container{
+.register-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,14 +16,14 @@ body {
     background: #F0F5F1;
 }
 
-.register{
+.register {
     width: 450px;
-    height: 700px;
+    height: 750px;
     border-radius: 20px;
     background: #FFFFFF;
 }
 
-.register-icon{
+.register-icon {
     width: 40px;
     height: 40px;
     display: flex;
@@ -31,68 +31,73 @@ body {
     justify-content: center;
     background: #DCFCE7;
     border-radius: 50%;
-    margin-top: 30px; 
+    margin-top: 30px;
 }
 
-.icon{
+.icon {
     color: #16A34A;
     width: 50%;
     height: 50%;
 }
 
-.sign-up-container{
+.sign-up-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:20px;
+    gap: 20px;
 }
 
-.sign-up-title{
-    color:black;
+.sign-up-title {
+    color: black;
     font-size: 22px;
     font-weight: 700;
 
 }
 
-.sign-up-text{
+.sign-up-text {
     color: #7F8591;
 }
 
-.form-element{
+.form-element {
     width: 100%;
     padding-left: 20px;
     padding-right: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap:10px;
+    gap: 10px;
 }
 
-.form-email{
+.form-email {
     color: black;
     font-weight: 600;
 }
 
-.form-fullname{
+.form-phone-number {
     color: black;
     font-weight: 600;
 }
 
-.form-password{
-    color:black;
+.form-fullname {
+    color: black;
+    font-weight: 600;
+}
+
+.form-password {
+    color: black;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.forgot-password{
+.forgot-password {
     color: green;
     font-size: 12px;
     text-decoration: none;
 }
 
-.input-data{
+.input-data {
     width: 100%;
     height: 40px;
     border-radius: 5px;
@@ -102,24 +107,24 @@ body {
 }
 
 .password-wrapper {
-  position: relative;
+    position: relative;
 }
 
 .eye-icon {
-  position: absolute;
-  right: 10px;
-  top:50%;
-  cursor: pointer;
-  color: #888;
-  font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    cursor: pointer;
+    color: #888;
+    font-size: 20px;
 }
 
-.checkbox{
+.checkbox {
     width: 17px;
     height: 17px;
 }
 
-.agree-div{
+.agree-div {
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -129,7 +134,7 @@ body {
     font-weight: 600;
 }
 
-.create-account-btn{
+.create-account-btn {
     width: 90%;
     padding: 10px;
     background: green;
@@ -137,24 +142,24 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    gap:10px;
+    gap: 10px;
     border-radius: 7px;
     cursor: pointer;
 }
 
-.sign-in{
+.sign-in {
     display: flex;
     align-items: center;
     justify-content: center;
     color: black;
 }
 
-.sign-in-text{
+.sign-in-text {
     color: green;
     text-decoration: none;
     padding: 2px;
 }
 
-.sign-in-text:hover{
+.sign-in-text:hover {
     text-decoration: underline;
 }
