@@ -3,7 +3,7 @@
     width: 100vw;
     top: 0;
     background-color: #EDF2EE;
-    z-index: 999;
+    z-index: 9999999;
     padding: 15px 20px;
     box-sizing: border-box;
     backdrop-filter: blur(7px);
@@ -196,7 +196,11 @@
     display: flex;
     flex-direction: column;
     height: 300px;
-    z-index: 999;
+    z-index: 9999999;
+}
+
+.container.invisible{
+    height: fit-content;
 }
 
 .linksM {
@@ -211,10 +215,11 @@
 }
 
 .linksM.invisible{
-    height: 0;
-    width: 100vw;
+    max-height: 0;
+    /* width: 100vw;
     overflow: hidden;
-    padding: 0;
+    padding: 0; */ 
+    display: none;
 }
 
 .linkM {

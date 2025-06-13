@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000000;
+    z-index: 10000000000;
     background: gray;
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -209,7 +209,8 @@
 
     .transparent-container {
         position: sticky;
-    }
+        margin-left: -35px;
+    } 
 
     .container {
         top:200px;
@@ -217,12 +218,13 @@
         flex-direction: column;
         position: relative;
         height: fit-content;
+        left:0;
     }
-
+    
     .img {
         min-height: 500px;
     }
-
+    /*
     .shop-form {
         padding-left: 0;
     }
@@ -268,5 +270,5 @@
     .addToCartBtn {
         padding: 12px 15px;
         font-size: 15px;
-    }
+    } */
 }

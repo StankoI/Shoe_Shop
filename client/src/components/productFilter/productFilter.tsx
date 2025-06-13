@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import styles from "./productFilter.module.css"
 import axios from "axios";
 import { IdType } from "../../types/idType";
+import useDevice from "../../hooks/useDevice";
 
 
 type Color = {
@@ -18,9 +19,10 @@ type Props = {
     onFilterChangeColors: (filters: string[]) => void;
     onFilterChangeCategories: (filtersCategories: string[]) => void;
     onFilterChangeValue: (priceFilter: number) => void;
+    onCloseFilter:(v :boolean) => void;
 }
 
-const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories, onFilterChangeValue }: Props) => {
+const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories, onFilterChangeValue, onCloseFilter }: Props) => {
     const [checkedListColors, setCheckedListColors] = useState<string[]>([]);
     const [colors, setColors] = useState<Color[]>([]);
 
@@ -28,6 +30,10 @@ const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories, onFilte
     const [categories, setCategories] = useState<Category[]>([]);
 
     const [priceValue, setPriceValue] = useState(0);
+
+    // const [visible, setVisible] = useState(true);
+
+    const device = useDevice();
 
     useEffect(() => {
         axios.get('http://localhost:8080/client/color')
@@ -96,6 +102,7 @@ const ProductFilter = ({ onFilterChangeColors, onFilterChangeCategories, onFilte
         <div className={styles["container"]}>
             <div className={styles["title"]}>Filters</div>
             <div className={styles["clean-all-btn"]} onClick={() => cleanAll()}>clean all</div>
+            {device === "mobile" && <div className={styles["close-btn"]} onClick={() => onCloseFilter(false)}>X</div>}
             <div className={styles["slidecontainer"]}>
                 <div className={styles["text"]}>Price Range</div>
                 <input type="range" min="0" max="200" value={priceValue} className={styles["slider"]} id="myRange" onChange={changeValue} />

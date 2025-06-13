@@ -5,8 +5,27 @@
 .main {
     display: flex;
     /* align-items: center; */
+    /* justify-content: space-around; */
+    flex-direction: column;
+    /* gap: 30px;
+    padding: 30px;
+    box-sizing: border-box; */
+}
+
+.filterAndProducts {
+    display: flex;
+    /* align-items: center; */
     justify-content: space-around;
     gap: 30px;
     padding: 30px;
     box-sizing: border-box;
+}
+
+
+@media(max-width: 768px)
+{
+    .filterAndProducts{
+        flex-direction: column;
+        z-index: 1000;
+    }
 }

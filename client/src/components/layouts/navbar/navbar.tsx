@@ -85,7 +85,8 @@ const Navbar = () => {
 
     const mobileNavbar = () => {
         return (
-            <div className={styles["container"]}>
+            // <div className={styles["container"]}>
+            <div className={`${styles["container"]} ${clicked ? "" : styles["invisible"]}`}>
                 <nav className={styles["navbarM"]}>
                     <div className={styles["nav-containerM"]}>
                         <div className={styles["nav-leftM"]}>
