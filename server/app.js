@@ -20,6 +20,7 @@ app.use(cookieParser());
 const AdminProductRouter = require('./src/routes/admin/product.router')
 const AdminColorRouter = require('./src/routes/admin/color.router')
 const AdminCategoriesRouter = require('./src/routes/admin/categories.router')
+const AdminLoginRouter = require('./src/routes/admin/adminUser.router')
 
 const ClientProductRouter = require('./src/routes/client/product.router')
 const ClientColorRouter = require('./src/routes/client/color.router')
@@ -42,6 +43,7 @@ app.get('/' , (req , res) => {
 app.use("/admin/products", AdminProductRouter);
 app.use("/admin/color", AdminColorRouter);
 app.use("/admin/categories", AdminCategoriesRouter);
+app.use("/admin/login", AdminLoginRouter);
 
 //CLIENT ENDPOINTS
 app.use("/client/products", ClientProductRouter);
