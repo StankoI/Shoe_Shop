@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const Order = require('../models/order')
 const bcrypt = require('bcryptjs')
 
 async function createUser(req, res) {
@@ -110,7 +111,7 @@ async function addOrder(req, res) {
         );
 
         if (!updUser) {
-            return res.sendStatus(404); 
+            return res.sendStatus(404);
         }
 
         return res.status(201).json(updUser);
@@ -121,4 +122,42 @@ async function addOrder(req, res) {
 }
 
 
-module.exports = { createUser, getUserByEmail, updateUser, addOrder };
+async function getAllOrders(req, res) {
+    try {
+        const id = req.params.id;
+
+        const user = await User.findById(id).select('orders_ids -_id');
+
+        const orders = await Promise.all(
+            user.orders_ids.map(async (orderId) => {
+                return await Order.findById(orderId).select('name address phoneNumber totalPrice products')
+            })
+        );
+
+        res.status(200).json(orders);
+    }
+    catch (err) {
+        res.status(500).json({error:err.message});
+    }
+
+}
+
+//     _id: string;
+//     products: ProductItem[];
+//     name: string;
+//     address: string;
+//     phoneNumber: string;
+//     totalPrice: number;
+
+async function getIdByEmail(req, res) {
+    try{
+        const email = req.params.email;
+        userId = await User.findOne({email:email}).select('_id');
+        res.status(200).json(userId);
+    }
+    catch(err){
+        res.status(500).json({error:err.message})
+    }
+}
+
+module.exports = { createUser, getUserByEmail, updateUser, addOrder, getAllOrders, getIdByEmail };

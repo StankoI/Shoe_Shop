@@ -346,3 +346,20 @@
     border-radius: 20px;
     border: solid 1px black;
 }
+
+.user-btn{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: rgb(93, 199, 93);
+}
+
+.user-btn.selected{
+     background:rgb(93, 199, 93);
+    color: white;
+}
+

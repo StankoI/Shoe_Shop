@@ -68,7 +68,7 @@ const EditUserData = ({ onClose, user }: Props) => {
     return (
         <div className={styles["blur-container"]}>
             <div className={styles["container"]}>
-                <h2 className={styles["title"]}>Edit User Information</h2>
+                <div className={styles["title"]}>Edit User Information</div>
 
                 <form onSubmit={handleSubmit} className={styles["form"]}>
                     <input

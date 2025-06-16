@@ -4,49 +4,48 @@
     background: white;
     z-index: 1000000000000000000;
     position: fixed;
-    margin-top: -4rem;
+    margin-top: -6rem;
     left:0;
 }
 
 .container {
-    /* position: fixed; */
     position: relative;
     top:20%;
     left:50%;
-    /* transform: translateY(-10%); */
     transform: translateX(-50%);
     z-index: 2;
-    padding: 1rem;
+    padding: 16px;
     border: 1px solid #ccc;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     background: white;
-    max-width: 32rem;
+    max-width: 500px;
     width: 100%;
 }
 
 .title {
-    font-size: 1.125rem;
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
+    color:gray;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
 }
 
 .input {
     width: 100%;
-    padding: 0.5rem 0.75rem;
+    padding: 8px 12px;
     border: 1px solid #ccc;
-    border-radius: 0.375rem;
+    border-radius: 6px;
 }
 
 .error {
     color: red;
-    font-size: 0.875rem;
+    font-size: 10px;
 }
 
 .buttonGroup {
@@ -55,16 +54,17 @@
 }
 
 .saveButton {
-    background-color: #2563eb;
+    background-color: #2bc733;
     color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
+    padding: 8px 16px;
+    border-radius: 6px;
     border: none;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .saveButton:hover {
-    background-color: #1d4ed8;
+    background-color: #118b1b;
 }
 
 .cancelButton {
@@ -74,6 +74,7 @@
     border-radius: 0.375rem;
     border: none;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .cancelButton:hover {

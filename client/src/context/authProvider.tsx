@@ -20,7 +20,6 @@ interface AuthContextType {
     setAuth: Dispatch<SetStateAction<AuthData>>;
 }
 
-
 const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {

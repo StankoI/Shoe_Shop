@@ -41,10 +41,10 @@ const UserInfo = () => {
     return (
         <div className={styles["container"]}>
             <div className={styles["info-title"]}>User Info</div>
-            <div className={styles["info"]}>Name:{user.name}</div>
+            <div className={styles["info"]}>Name: {user.name}</div>
             <div className={styles["info"]}>Email: {user.email}</div>
-            <div className={styles["info"]}>Phone:{user.phoneNumber}</div>
-            <div className={styles["info"]}>Address:{user.address}</div>
+            <div className={styles["info"]}>Phone: {user.phoneNumber}</div>
+            <div className={styles["info"]}>Address: {user.address}</div>
             <button className={styles["edit-btn"]} onClick={() => setClosed(prev => !prev)}> edit profile</button>
             {!closed &&
                 <EditUserData user={user} onClose={() => {setClosed(prev => !prev)}}></EditUserData>
