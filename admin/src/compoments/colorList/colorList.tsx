@@ -28,12 +28,12 @@ const ColorList = () => {
         }
 
         fetchColors();
-    },[colors])
+    },[])
 
     const handleRemove = async (id: string) => {
         try {
             await axios.delete(`http://localhost:8080/admin/color/${id}`)
-            colors.filter(col => col._id !== id)
+            setColors(prev => prev.filter(cat => cat._id !== id))
         }
         catch (err) {
             console.log(err);

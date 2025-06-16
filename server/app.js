@@ -44,7 +44,7 @@ app.get('/' , (req , res) => {
 //ADMIN ENDPOINTS
 app.use("/admin/products", AdminProductRouter);
 app.use("/admin/color", AdminColorRouter);
-app.use("/admin/categories", AdminCategoriesRouter);
+app.use("/admin/category", AdminCategoriesRouter);
 app.use("/admin/login", AdminLoginRouter);
 app.use("/admin/logout", AdminLogoutRouter);
 app.use("/admin/refresh", AdminRefreshRouter);

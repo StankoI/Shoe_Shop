@@ -1,24 +1,23 @@
 
 import {useState } from "react"
-import styles from "./addColor.module.css"
+import styles from "./addCategory.module.css"
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-const AddColor = () => {
+const AddCategory = () => {
 
     const axios = useAxiosPrivate();
-    const [colorInput, setColorInput] = useState('');
+    const [categoryInput, setCategoryInput] = useState('');
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
         e.preventDefault()
         const value = e.target.value;
-        setColorInput(value);
+        setCategoryInput(value);
     }
 
     const handleSubmit = async () => {
         try{
-            await axios.post("http://localhost:8080/admin/color", {color:colorInput})
-            setColorInput('');
+            await axios.post("http://localhost:8080/admin/category", {category:categoryInput})
+            setCategoryInput('');
         }
         catch(err){
             console.log(err);
@@ -28,11 +27,11 @@ const AddColor = () => {
     return(
         <div className={styles["container"]}>
             <form>
-                <input type="text" placeholder="color" value={colorInput} onChange={handleChange}></input>
+                <input type="text" placeholder="color" value={categoryInput} onChange={handleChange}></input>
                 <button onClick={handleSubmit}>add Color</button>
             </form>
         </div>
     )
 }
 
-export default AddColor;
+export default AddCategory;
