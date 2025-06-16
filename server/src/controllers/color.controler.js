@@ -26,4 +26,16 @@ async function getColors(req, res) {
     }
 }
 
-module.exports = { AddColor ,getColors };
+async function RemoveColor(req, res) {
+    try{
+        const id = req.params.id;
+        await Color.findByIdAndDelete(id);
+        
+        res.sendStatus(200);
+    }
+    catch(err){
+        res.sendStatus(500);
+    }
+}
+
+module.exports = { AddColor ,getColors, RemoveColor };
