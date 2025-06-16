@@ -8,10 +8,11 @@ import { FaArrowRightToBracket } from "react-icons/fa6";
 import useAuth from "../../../hooks/useAuth";
 import useLogout from "../../../hooks/useLogout";
 import { useShoppingCart } from "../../../contexts/shopingCartContext";
+import { IoPerson } from "react-icons/io5";
 
 const Navbar = () => {
 
-    const {cartQuantity} = useShoppingCart();
+    const { cartQuantity } = useShoppingCart();
     const [clicked, setClicked] = useState(false);
     const device = useDevice();
     const logout = useLogout();
@@ -70,139 +71,143 @@ const Navbar = () => {
                                 Hello, {auth.name || "User"}
                             </div>
                             <div className={styles["logout-btn"]} onClick={logout}>logout</div>
-                        </>
-                        ) : (
-                            <NavLink
-                                to="/login"
+                            <NavLink to="/user"
                                 className={({ isActive }) =>
-                                    `${styles["login-btn"]} ${isActive ? styles["selected"] : ""}`
-                                }
-                            >
-                                <FaArrowRightToBracket />
-                                Login
+                                    `${styles["user-btn"]} ${isActive ? styles["selected"] : ""}` }>
+                                    <IoPerson />
                             </NavLink>
+                    </>
+                    ) : (
+                    <NavLink
+                        to="/login"
+                        className={({ isActive }) =>
+                            `${styles["login-btn"]} ${isActive ? styles["selected"] : ""}`
+                        }
+                    >
+                        <FaArrowRightToBracket />
+                        Login
+                    </NavLink>
                         )}
 
-                        <NavLink
-                            to="/shopingCart"
-                             className={({ isActive }) =>
-                                `${styles["shoping-cart-btn"]} ${isActive ? styles["selected"] : ""}`
-                            }>
+                    <NavLink
+                        to="/shopingCart"
+                        className={({ isActive }) =>
+                            `${styles["shoping-cart-btn"]} ${isActive ? styles["selected"] : ""}`
+                        }>
 
-                            <CiShoppingBasket className={styles["shoping-cart-icon"]} />
-                            <div
-                                className={`${styles["shoping-cart-notification"]} ${cartQuantity === 0 ? styles["invisible"] : ""
-                                    }`}
-                            >
-                                {cartQuantity}
-                            </div>
-                        </NavLink>
-                    </div>
+                        <CiShoppingBasket className={styles["shoping-cart-icon"]} />
+                        <div
+                            className={`${styles["shoping-cart-notification"]} ${cartQuantity === 0 ? styles["invisible"] : ""
+                                }`}
+                        >
+                            {cartQuantity}
+                        </div>
+                    </NavLink>
                 </div>
-            </nav>
+            </div>
+            </nav >
         );
     }
 
-    const mobileNavbar = () => {
-        return (
-            // <div className={styles["container"]}>
-            <div className={`${styles["container"]} ${clicked ? "" : styles["invisible"]}`}>
-                <nav className={styles["navbarM"]}>
-                    <div className={styles["nav-containerM"]}>
-                        <div className={styles["nav-leftM"]}>
-                            <Logo />
-                        </div>
-                        <div className={styles["menu"]} onClick={handleClick}>
-                            <div className={`${styles["lines"]} ${!clicked ? "" : styles["invisible"]}`}>
-                                <div className={styles["line"]}></div>
-                                <div className={styles["line"]}></div>
-                                <div className={styles["line"]}></div>
-                            </div>
-                            <div className={`${styles["linesX"]} ${clicked ? "" : styles["invisible"]}`}>
-                                <div className={styles["lineX1"]}></div>
-                                <div className={styles["lineX2"]}></div>
-                            </div>
-                        </div>
+const mobileNavbar = () => {
+    return (
+        <div className={`${styles["container"]} ${clicked ? "" : styles["invisible"]}`}>
+            <nav className={styles["navbarM"]}>
+                <div className={styles["nav-containerM"]}>
+                    <div className={styles["nav-leftM"]}>
+                        <Logo />
                     </div>
-                </nav>
-
-                <div className={`${styles["linksM"]} ${clicked ? "" : styles["invisible"]}`}>
-                    <NavLink
-                        to="/"
-                        className={({ isActive }) =>
-                            `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
-                        }
-                        onClick={() => setClicked(false)}
-                    >
-                        Home
-                    </NavLink>
-
-                    <NavLink
-                        to="/products"
-                        className={({ isActive }) =>
-                            `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
-                        }
-                        onClick={() => setClicked(false)}
-                    >
-                        Products
-                    </NavLink>
-
-                    <NavLink
-                        to="/about"
-                        className={({ isActive }) =>
-                            `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
-                        }
-                        onClick={() => setClicked(false)}
-                    >
-                        About
-                    </NavLink>
-
-                    <NavLink
-                        to="/contact"
-                        className={({ isActive }) =>
-                            `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
-                        }
-                        onClick={() => setClicked(false)}
-                    >
-                        Contact
-                    </NavLink>
-
-                    <div className={styles["actionsM"]}>
-                        {isLoggedIn ? (<>
-                            <div className={styles["greetingM"]}>
-                                Hello, {auth.name || "User"}
-                            </div>
-                            <div className={styles["logout-btn"]} onClick={logout}>logout</div>
-                        </>
-                        ) : (
-                            <NavLink
-                                to="/login"
-                                className={({ isActive }) =>
-                                    `${styles["login-btnM"]} ${isActive ? styles["selected"] : ""}`
-                                }
-                                onClick={() => setClicked(false)}
-                            >
-                                <FaArrowRightToBracket />
-                                Login
-                            </NavLink>
-                        )}
-
-                        <NavLink
-                            to="/shopingCart"
-                            className={styles["shoping-cart-buttonM"]}
-                            onClick={() => setClicked(false)}
-                        >
-                            Cart {cartQuantity === 0 ? "" : `(${cartQuantity})`}
-                            <CiShoppingBasket className={styles["shoping-cart-icon-M"]} />
-                        </NavLink>
+                    <div className={styles["menu"]} onClick={handleClick}>
+                        <div className={`${styles["lines"]} ${!clicked ? "" : styles["invisible"]}`}>
+                            <div className={styles["line"]}></div>
+                            <div className={styles["line"]}></div>
+                            <div className={styles["line"]}></div>
+                        </div>
+                        <div className={`${styles["linesX"]} ${clicked ? "" : styles["invisible"]}`}>
+                            <div className={styles["lineX1"]}></div>
+                            <div className={styles["lineX2"]}></div>
+                        </div>
                     </div>
                 </div>
+            </nav>
+
+            <div className={`${styles["linksM"]} ${clicked ? "" : styles["invisible"]}`}>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
+                    }
+                    onClick={() => setClicked(false)}
+                >
+                    Home
+                </NavLink>
+
+                <NavLink
+                    to="/products"
+                    className={({ isActive }) =>
+                        `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
+                    }
+                    onClick={() => setClicked(false)}
+                >
+                    Products
+                </NavLink>
+
+                <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                        `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
+                    }
+                    onClick={() => setClicked(false)}
+                >
+                    About
+                </NavLink>
+
+                <NavLink
+                    to="/contact"
+                    className={({ isActive }) =>
+                        `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
+                    }
+                    onClick={() => setClicked(false)}
+                >
+                    Contact
+                </NavLink>
+
+                <div className={styles["actionsM"]}>
+                    {isLoggedIn ? (<>
+                        <div className={styles["greetingM"]}>
+                            Hello, {auth.name || "User"}
+                        </div>
+                        <div className={styles["logout-btn"]} onClick={logout}>logout</div>
+                    </>
+                    ) : (
+                        <NavLink
+                            to="/login"
+                            className={({ isActive }) =>
+                                `${styles["login-btnM"]} ${isActive ? styles["selected"] : ""}`
+                            }
+                            onClick={() => setClicked(false)}
+                        >
+                            <FaArrowRightToBracket />
+                            Login
+                        </NavLink>
+                    )}
+
+                    <NavLink
+                        to="/shopingCart"
+                        className={styles["shoping-cart-buttonM"]}
+                        onClick={() => setClicked(false)}
+                    >
+                        Cart {cartQuantity === 0 ? "" : `(${cartQuantity})`}
+                        <CiShoppingBasket className={styles["shoping-cart-icon-M"]} />
+                    </NavLink>
+                </div>
             </div>
-        );
-    };
+        </div>
+    );
+};
 
 
-    return device === 'pc' ? pcNavbar() : mobileNavbar();
+return device === 'pc' ? pcNavbar() : mobileNavbar();
 };
 
 export default Navbar;

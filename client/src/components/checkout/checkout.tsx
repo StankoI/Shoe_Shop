@@ -9,11 +9,11 @@ const Checkout = () => {
     const { cartItems, cleanCart } = useShoppingCart();
     const [subtotal, setSubtotal] = useState(0);
 
-    const {auth} = useAuth()
+    const { auth } = useAuth()
 
     const [formData, setFormData] = useState({
         name: auth.name,
-        address: '',
+        address: auth.address,
         phoneNumber: auth.phoneNumber
     });
 
@@ -78,8 +78,17 @@ const Checkout = () => {
         };
 
         try {
-            const res = await axios.post('http://localhost:8080/client/order', orderData); 
+            const res = await axios.post('http://localhost:8080/client/order', orderData);
             console.log('Order submitted:', res.data);
+
+            //here i have to add logic to add the user a orders ids http://localhost:8080/client/user/email/order
+
+            if (auth?.accessToken) {
+                await axios.put('http://localhost:8080/client/user/email/order',{
+                    email:auth.email,
+                    order_id:res.data._id
+                })
+            }
 
             cleanCart();
             alert('Поръчката беше успешно направена!');
@@ -97,8 +106,8 @@ const Checkout = () => {
                 <div className={styles['section-title']}>Продукти в количката</div>
 
                 <div className={styles['cart-list']}>
-                    {cartItems.map((item) => (
-                        <CartItemTSX key={item.id} id={item.id} quantity={item.quantity} size={item.size} />
+                    {cartItems.map((item, idx) => (
+                        <CartItemTSX key={idx} id={item.id} quantity={item.quantity} size={item.size} />
                     ))}
                 </div>
 

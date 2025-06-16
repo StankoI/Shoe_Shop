@@ -13,21 +13,23 @@ import PublicRoute from './routes/publicRoutes';
 import ShopingCartPage from './pages/shopingCart';
 import { ShoppingCartProvider } from './contexts/shopingCartContext';
 import CheckoutPage from './pages/checkout';
+import UserPage from './pages/user';
+import PrivateRoute from './routes/privateRoutes';
 
 
 function App() {
-    return (
-      <AuthProvider>
-        <ShoppingCartProvider>
-            <Router>
-                <Navbar />
-                <ScrollToTop />
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/contact" element={<ContactPage />} />
+  return (
+    <AuthProvider>
+      <ShoppingCartProvider>
+        <Router>
+          <Navbar />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
 
-                    <Route path="/login" element={
+            <Route path="/login" element={
               <PublicRoute>
                 <LoginPage />
               </PublicRoute>
@@ -39,15 +41,21 @@ function App() {
               </PublicRoute>
             } />
 
-                    <Route path="/products" element={<ProductPage />} />
-                    <Route path="/shopingCart" element={<ShopingCartPage />} />
-                    <Route path="/checkout" element={<CheckoutPage/>}/>
-                </Routes>
-                <Footer />
-            </Router>
-        </ShoppingCartProvider>
-        </AuthProvider>
-    )
+            <Route path="/user" element={
+              <PrivateRoute>
+                <UserPage />
+              </PrivateRoute>
+            }/>
+
+            <Route path="/products" element={<ProductPage />} />
+            <Route path="/shopingCart" element={<ShopingCartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ShoppingCartProvider>
+    </AuthProvider>
+  )
 
 }
 
