@@ -21,6 +21,7 @@ const AdminProductRouter = require('./src/routes/admin/product.router')
 const AdminColorRouter = require('./src/routes/admin/color.router')
 const AdminCategoriesRouter = require('./src/routes/admin/categories.router')
 const AdminLoginRouter = require('./src/routes/admin/adminUser.router')
+const AdminLogoutRouter = require('./src/routes/admin/logout.router')
 
 const ClientProductRouter = require('./src/routes/client/product.router')
 const ClientColorRouter = require('./src/routes/client/color.router')
@@ -44,6 +45,7 @@ app.use("/admin/products", AdminProductRouter);
 app.use("/admin/color", AdminColorRouter);
 app.use("/admin/categories", AdminCategoriesRouter);
 app.use("/admin/login", AdminLoginRouter);
+app.use("/admin/logout", AdminLogoutRouter);
 
 //CLIENT ENDPOINTS
 app.use("/client/products", ClientProductRouter);
