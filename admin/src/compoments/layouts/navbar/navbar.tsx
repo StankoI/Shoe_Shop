@@ -52,7 +52,7 @@ const Navbar = () => {
                                 Categories
                             </NavLink>
                             <NavLink
-                                to="/contact"
+                                to="/colors"
                                 className={({ isActive }) =>
                                     `${styles["link"]} ${isActive ? styles["selected"] : ""}`
                                 }
