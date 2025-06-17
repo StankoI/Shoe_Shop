@@ -4,7 +4,7 @@ import styles from "./categoriesList.module.css"
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useEffect, useState } from "react";
 
-interface Category {
+export interface Category {
     _id: string;
     category: string;
 }
