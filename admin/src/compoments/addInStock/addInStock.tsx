@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import styles from "./addInStock.module.css"
 
-interface AddInStockProps {
+interface Props {
     productId: string;
 }
 
-const AddInStock: React.FC<AddInStockProps> = ({ productId }) => {
+const AddInStock = ({ productId }:Props) => {
     const axiosPrivate = useAxiosPrivate();
     const [size, setSize] = useState<number>(0);
     const [quantity, setQuantity] = useState<number>(0);
