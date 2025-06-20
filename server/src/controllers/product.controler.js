@@ -1,3 +1,4 @@
+const { response } = require('express');
 const color = require('../models/color');
 const Product = require('../models/product');
 
@@ -111,4 +112,46 @@ async function addInStock(req, res) {
     }
 }
 
-module.exports = { addProduct, getAllProducts, addInStock, getProduct, getProductPrice};
+async function deleteProduct(req, res) {
+    try{
+        const id = req.params.id;
+        await Product.findByIdAndDelete(id);
+        
+        res.sendStatus(200);
+    }
+    catch(err){
+        res.sendStatus(500);
+    }
+} 
+
+async function editProduct(req, res) {
+    try{
+        const {
+            name,
+            description,
+            price,
+            img,
+            categories,
+            color
+        } = req.body;
+
+        const id = req.params.id;
+        
+        console.log(description);
+
+        await Product.findByIdAndUpdate(id, {
+            name:name,
+            description:description,
+            price:price,
+            img:img,
+            categories:categories,
+            color:color
+        })
+        res.sendStatus(200);
+    }
+    catch(err){
+        res.sendStatus(500);
+    }
+}
+
+module.exports = { addProduct, getAllProducts, addInStock, getProduct, getProductPrice, deleteProduct, editProduct};

@@ -4,7 +4,7 @@ import styles from "./colorList.module.css"
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useEffect, useState } from "react";
 
-interface Color {
+export interface Color {
     _id: string;
     color: string;
 }
