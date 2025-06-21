@@ -137,7 +137,7 @@ async function getAllOrders(req, res) {
         res.status(200).json(orders);
     }
     catch (err) {
-        res.status(500).json({error:err.message});
+        res.status(500).json({ error: err.message });
     }
 
 }
@@ -150,14 +150,82 @@ async function getAllOrders(req, res) {
 //     totalPrice: number;
 
 async function getIdByEmail(req, res) {
-    try{
+    try {
         const email = req.params.email;
-        userId = await User.findOne({email:email}).select('_id');
+        userId = await User.findOne({ email: email }).select('_id');
         res.status(200).json(userId);
     }
-    catch(err){
-        res.status(500).json({error:err.message})
+    catch (err) {
+        res.status(500).json({ error: err.message })
     }
 }
 
-module.exports = { createUser, getUserByEmail, updateUser, addOrder, getAllOrders, getIdByEmail };
+
+async function getAllUsers(req, res) {
+    try {
+        const users = await User.find()
+            .select('name email phoneNumber address role')
+
+        if (!users) {
+            res.sendStatus(404);
+        }
+
+        res.status(200).json(users);
+    }
+    catch (err) {
+        res.status(500).json({ error: err.message })
+    }
+}
+
+async function updateUserPromAdmin(req, res) {
+    try {
+        const id = req.params.id;
+
+        const {
+            name,
+            email,
+            address,
+            phoneNumber,
+            role } = req.body;
+
+        if (!name || !email || !phoneNumber) {
+            return res.status(400).json({ message: "Missing required fields." });
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(
+            id,
+            {
+                name: name,
+                email: email,
+                address: address,
+                phoneNumber: phoneNumber,
+                role: role
+            },
+            { new: true, runValidators: true }
+        ).select('-password');
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        res.status(200).json(updatedUser);
+
+    } catch (err) {
+        console.error("Error updating user:", err);
+        res.status(500).json({ message: "Internal server error." });
+    }
+
+}
+
+async function deleteUser(req, res) {
+    try {
+        const id = req.params.id;
+        await User.findByIdAndDelete(id);
+        res.sendStatus(200);
+    }
+    catch (err) {
+        res.status(500).json({error: err.message})
+    }
+}
+
+module.exports = { createUser, getUserByEmail, updateUser, addOrder, getAllOrders, getIdByEmail, getAllUsers, updateUserPromAdmin, deleteUser};
