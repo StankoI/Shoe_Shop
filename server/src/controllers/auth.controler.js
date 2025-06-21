@@ -21,9 +21,9 @@ async function handleLogin(req, res) {
         return res.status(401).json({ "message": "UnAuthorized" })
     }
 
-    // const match = await bcrypt.compare(password, foundedUser.password);
+    const match = await bcrypt.compare(password, foundedUser.password);
 
-    match = password === foundedUser.password;
+    // match = password === foundedUser.password;
 
     console.log("jjj")
 
@@ -71,7 +71,8 @@ async function handleLogin(req, res) {
                 name: foundedUser.name,
                 email: foundedUser.email,
                 phoneNumber: foundedUser.phoneNumber,
-                role: foundedUser.role
+                role: foundedUser.role,
+                address:foundedUser.address
             }
         })
     }

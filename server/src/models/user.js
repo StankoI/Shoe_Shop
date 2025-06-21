@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    phoneNumber:{
+    phoneNumber: {
         type: String,
         required: true
     },
@@ -17,10 +17,19 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    address: {
+        type: String,
+        default: ''
+    },
     role: {
         type: String,
         default: "client"
-    }
+    },
+    orders_ids: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Order',
+        default: []
+    }]
 }, {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 })

@@ -11,6 +11,7 @@ interface AuthData {
     phoneNumber: string;
     role: string;
     password: string;
+    address:string;
     accessToken: string;
 }
 
@@ -18,7 +19,6 @@ interface AuthContextType {
     auth: AuthData;
     setAuth: Dispatch<SetStateAction<AuthData>>;
 }
-
 
 const AuthContext = createContext({} as AuthContextType);
 
@@ -32,6 +32,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             phoneNumber: '',
             role: '',
             password: '',
+            address:'',
             accessToken: ''
         };
     });

@@ -54,9 +54,9 @@ const CartItemTSX = ({ id, quantity, size }: Props) => {
                     <button className={styles["actionLink"]} onClick={() => removeFromCart(id, size)}>
                         Remove
                     </button>
-                    <button className={styles["actionLink"]}>
+                    {/* <button className={styles["actionLink"]}>
                         Save
-                    </button>
+                    </button> */}
                 </div>
             </div>
             <div className={styles["priceDetails"]}>
