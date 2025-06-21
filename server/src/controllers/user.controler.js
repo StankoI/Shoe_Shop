@@ -164,16 +164,16 @@ async function getIdByEmail(req, res) {
 async function getAllUsers(req, res) {
     try {
         const users = await User.find()
-        .select('name email phoneNumber address role')
+            .select('name email phoneNumber address role')
 
-        if(!users){
+        if (!users) {
             res.sendStatus(404);
         }
 
         res.status(200).json(users);
     }
     catch (err) {
-        res.status(500).json({error : err.message})
+        res.status(500).json({ error: err.message })
     }
 }
 
@@ -199,7 +199,7 @@ async function updateUserPromAdmin(req, res) {
                 email: email,
                 address: address,
                 phoneNumber: phoneNumber,
-                role:role
+                role: role
             },
             { new: true, runValidators: true }
         ).select('-password');
@@ -214,7 +214,18 @@ async function updateUserPromAdmin(req, res) {
         console.error("Error updating user:", err);
         res.status(500).json({ message: "Internal server error." });
     }
-    
+
 }
 
-module.exports = { createUser, getUserByEmail, updateUser, addOrder, getAllOrders, getIdByEmail, getAllUsers,updateUserPromAdmin };
+async function deleteUser(req, res) {
+    try {
+        const id = req.params.id;
+        await User.findByIdAndDelete(id);
+        res.sendStatus(200);
+    }
+    catch (err) {
+        res.status(500).json({error: err.message})
+    }
+}
+
+module.exports = { createUser, getUserByEmail, updateUser, addOrder, getAllOrders, getIdByEmail, getAllUsers, updateUserPromAdmin, deleteUser};

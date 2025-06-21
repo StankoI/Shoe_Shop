@@ -20,11 +20,23 @@ const UsersLayout = () => {
             }
         }
         fetchUsers();
-    },[])
+    }, [])
+
+    const deleteUser = async (id: string) => {
+
+        try {
+            setUsers(prev => prev.filter(el => el._id !== id))
+
+            await axios.delete(`http://localhost:8080/admin/users/${id}`)
+        }
+        catch(err){
+
+        }
+    }
 
     return (
         <div style={{ marginTop: "4rem" }}>
-            {users.map((user) => <UserItem key={user._id} user={user} />)}
+            {users.map((user) => <UserItem key={user._id} user={user} onDelete={deleteUser} />)}
         </div>
     )
 }

@@ -5,10 +5,11 @@ import EditUser from "../editUser/editUser";
 
 type Props={
     user: User;
+    onDelete: (id:string) => void;
 }
 
 
-const UserItem = ({user}:Props) => {
+const UserItem = ({user, onDelete}:Props) => {
 
     const [clicked, setClicked] = useState(false)
 
@@ -23,6 +24,7 @@ const UserItem = ({user}:Props) => {
             {
                 clicked && <EditUser user={user} onClose={() => setClicked(prev => !prev)}/>
             }
+            <button onClick={() => onDelete(user._id) }>delete</button>
         </div>
     )
 
