@@ -8,6 +8,7 @@ import ColorPage from './pages/colorPage';
 import CategoriesPage from './pages/categoriesPage';
 import ProductPage from './pages/productPage';
 import PrivateRoute from './routes/privateRoute';
+import OrdersPage from './pages/ordersPage';
 
 
 const App = () => {
@@ -38,6 +39,11 @@ const App = () => {
                     <Route path='/products' element={
                         <PrivateRoute>
                             <ProductPage />
+                        </PrivateRoute>
+                    }></Route>
+                    <Route path='/orders' element={
+                        <PrivateRoute>
+                            <OrdersPage />
                         </PrivateRoute>
                     }></Route>
                 </Routes>

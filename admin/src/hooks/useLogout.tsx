@@ -20,7 +20,7 @@ const useLogout = () => {
                 accessToken: ''
             });
             sessionStorage.removeItem("auth");
-            navigate('/');
+            navigate('/login');
         } catch (err) {
             console.error('Logout failed:', err);
         }
