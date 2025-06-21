@@ -27,4 +27,16 @@ async function getCategory(req, res) {
     }
 }
 
-module.exports = { AddCategory, getCategory}
+async function RemoveCategory(req, res) {
+    try{
+            const id = req.params.id;
+            await Category.findByIdAndDelete(id);
+            
+            res.sendStatus(200);
+        }
+        catch(err){
+            res.sendStatus(500);
+        }
+}
+
+module.exports = { AddCategory, getCategory, RemoveCategory}

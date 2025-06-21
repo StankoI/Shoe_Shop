@@ -1,0 +1,11 @@
+
+.color{
+    border: 1px solid black;
+    display: flex;
+    gap: 20px;
+    width: 200px;
+}
+
+.btn{
+    cursor: pointer;
+}

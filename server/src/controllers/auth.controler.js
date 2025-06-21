@@ -11,7 +11,11 @@ async function handleLogin(req, res) {
         return res.status(400).json({ "message": "email and password are required" });
     }
 
-    const foundedUser = await User.findOne({ email });
+    console.log(email)
+    console.log(password)
+
+
+    const foundedUser = await User.findOne({ email:email });
 
     if (!foundedUser) {
         return res.status(401).json({ "message": "UnAuthorized" })
@@ -20,6 +24,8 @@ async function handleLogin(req, res) {
     const match = await bcrypt.compare(password, foundedUser.password);
 
     // match = password === foundedUser.password;
+
+    console.log("jjj")
 
     if (match) {
         //create JWTs
