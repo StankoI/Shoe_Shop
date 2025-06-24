@@ -10,6 +10,7 @@ import ProductPage from './pages/productPage';
 import PrivateRoute from './routes/privateRoute';
 import OrdersPage from './pages/ordersPage';
 import UsersPage from './pages/usersPage';
+import InvoicesPage from './pages/invoicesPage';
 
 
 const App = () => {
@@ -50,6 +51,11 @@ const App = () => {
                     <Route path='/users' element={
                         <PrivateRoute>
                             <UsersPage />
+                        </PrivateRoute>
+                    }></Route>
+                    <Route path='/invoices' element={
+                        <PrivateRoute>
+                            <InvoicesPage />
                         </PrivateRoute>
                     }></Route>
                 </Routes>
