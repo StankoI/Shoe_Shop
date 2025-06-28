@@ -27,9 +27,9 @@ const AddColor = () => {
 
     return(
         <div className={styles["container"]}>
-            <form>
-                <input type="text" placeholder="color" value={colorInput} onChange={handleChange}></input>
-                <button onClick={handleSubmit}>add Color</button>
+            <form className={styles["form"]}>
+                <input type="text" placeholder="color" value={colorInput} onChange={handleChange} className={styles["input"]}></input>
+                <button className={styles["button"]} onClick={handleSubmit}>add Color</button>
             </form>
         </div>
     )

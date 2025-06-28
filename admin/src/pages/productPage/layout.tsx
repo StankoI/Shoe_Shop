@@ -37,7 +37,7 @@ const ProductLayout = () => {
     }
     
     return(
-        <div style={{marginTop:"4rem"}}>
+        <div style={{marginTop:"3.5rem", background:"white"}}>
             <AddProduct/>
             <ProductList products={products} onRemove={removeItem}/>
         </div>

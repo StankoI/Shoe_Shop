@@ -59,7 +59,7 @@ const Navbar = () => {
                             >
                                 Colors
                             </NavLink>
-                             <NavLink
+                            <NavLink
                                 to="/users"
                                 className={({ isActive }) =>
                                     `${styles["link"]} ${isActive ? styles["selected"] : ""}`
@@ -92,7 +92,7 @@ const Navbar = () => {
                             </div>
                             <div className={styles["logout-btn"]} onClick={logout}>logout</div>
                         </>
-                        ) }
+                        )}
 
                     </div>
                 </div>
@@ -145,23 +145,52 @@ const Navbar = () => {
                     </NavLink>
 
                     <NavLink
-                        to="/about"
+                        to="/categories"
                         className={({ isActive }) =>
                             `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
                         }
                         onClick={() => setClicked(false)}
                     >
-                        About
+                        Categories
                     </NavLink>
 
                     <NavLink
-                        to="/contact"
+                        to="/colors"
                         className={({ isActive }) =>
                             `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
                         }
                         onClick={() => setClicked(false)}
                     >
-                        Contact
+                        Colors
+                    </NavLink>
+
+                    <NavLink
+                        to="/users"
+                        className={({ isActive }) =>
+                            `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
+                        }
+                        onClick={() => setClicked(false)}
+                    >
+                        Users
+                    </NavLink>
+
+                    <NavLink
+                        to="/invoices"
+                        className={({ isActive }) =>
+                            `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
+                        }
+                        onClick={() => setClicked(false)}
+                    >
+                        Invoices
+                    </NavLink>
+
+                    <NavLink
+                        to="/orders"
+                        className={({ isActive }) =>
+                            `${styles["linkM"]} ${isActive ? styles["selected"] : ""}`
+                        }
+                    >
+                        Orders
                     </NavLink>
 
                     <div className={styles["actionsM"]}>

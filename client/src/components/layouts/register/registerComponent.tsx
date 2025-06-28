@@ -5,9 +5,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import { LuUserPlus } from "react-icons/lu";
 import axios from "axios";
-import bcrypt from "bcryptjs";
-// var bcrypt = require('bcryptjs');
-// var salt = bcrypt.genSaltSync(10);
 
 const RegisterComponent = () => {
 
@@ -45,20 +42,43 @@ const RegisterComponent = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (formData.password !== formData.confirmPassword) {
-            alert("паролите несъвпадат");
+        const { name, email, phoneNumber, password, confirmPassword } = formData;
+
+        if (!name.trim()) {
+            alert("Моля, въведете име.");
             return;
         }
 
-        if (agreed === false) {
-            alert("трябва да се съгласите с term and privacy")
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Моля, въведете валиден имейл.");
+            return;
+        }
+
+        const phoneRegex = /^\d{9,15}$/;
+        if (!phoneRegex.test(phoneNumber)) {
+            alert("Моля, въведете валиден телефонен номер (само цифри, между 9 и 15 символа).");
+            return;
+        }
+
+        if (password.length < 6) {
+            alert("Паролата трябва да съдържа поне 6 символа.");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Паролите не съвпадат.");
+            return;
+        }
+
+        if (!agreed) {
+            alert("Трябва да се съгласите с условията.");
             return;
         }
 
         const registerData = {
             ...formData,
         }
-
 
         try {
             await axios.post('http://localhost:8080/client/user', registerData);
@@ -68,15 +88,14 @@ const RegisterComponent = () => {
                 phoneNumber: '',
                 password: '',
                 confirmPassword: ''
-            })
+            });
+            alert("Регистрацията е успешна!");
+        } catch (error: any) {
+            console.error('Грешка при регистрация:', error.response?.data || error.message);
+            alert('Грешка при регистрация. Опитайте отново.');
+        }
+    };
 
-            alert("регистрирахте се успешно")
-        }
-        catch (error: any) {
-            console.error('Error submitting order:', error.response?.data || error.message);
-            alert('Грешка при регистрация');
-        }
-    }
 
     return (
         <div className={styles["register-container"]}>

@@ -42,7 +42,6 @@ const ColorList = () => {
 
     return (
         <div className={styles["container"]}>
-            Aveliable Colors:
             {colors.map((color) => {
                 return (
                     <div key={color._id} className={styles["color"]}>{color.color} 

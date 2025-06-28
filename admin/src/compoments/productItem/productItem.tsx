@@ -22,7 +22,7 @@ const ProductItem = ({ product, onRemove }: Props) => {
                 <div className={styles["information"]}>
                     <div className={styles["name"]}>{product.name}</div>
                     {/* <div className={styles["rating"]}>00000</div> */}
-                    <div className={styles["price"]}>{product.price}</div>
+                    <div className={styles["price"]}>${product.price}</div>
                 </div>
                 <div className={styles["remove-btn"]} onClick={() => onRemove(product.id)}>remove</div>
                 <div className={styles["edit-btn"]} onClick={() => setClicked(prev => !prev)}>edit</div>

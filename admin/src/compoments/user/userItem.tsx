@@ -24,7 +24,7 @@ const UserItem = ({user, onDelete}:Props) => {
             {
                 clicked && <EditUser user={user} onClose={() => setClicked(prev => !prev)}/>
             }
-            <button onClick={() => onDelete(user._id) }>delete</button>
+            <button className={styles["button"]} onClick={() => onDelete(user._id) }>delete</button>
         </div>
     )
 
