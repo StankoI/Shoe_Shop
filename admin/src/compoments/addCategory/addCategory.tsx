@@ -27,7 +27,7 @@ const AddCategory = () => {
     return(
         <div className={styles["container"]}>
             <form>
-                <input type="text" placeholder="color" value={categoryInput} onChange={handleChange}></input>
+                <input type="text" placeholder="color" value={categoryInput} onChange={handleChange} className={styles["input"]}></input>
                 <button onClick={handleSubmit}>add Color</button>
             </form>
         </div>

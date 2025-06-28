@@ -52,8 +52,6 @@ const AddInvoice = () => {
         const subtotal = items.reduce((sum, item) => sum + item.total, 0);
 
         const total = (subtotal + subtotal*(tax/100));
-        // console.log(subtotal);
-        // console.log(total);
 
         const newInvoice = {
             customerName,
