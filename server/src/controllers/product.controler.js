@@ -71,24 +71,24 @@ async function getProduct(req, res) {
             ...product,
             color: product.color?.color || null
         }
-            
+
         res.status(200).json(modifiedProduct);
     }
-    catch(err){
-        res.status(400).json({error: err.message})
+    catch (err) {
+        res.status(400).json({ error: err.message })
     }
 }
 
 async function getProductPrice(req, res) {
-    try{
+    try {
         const id = req.params.id;
         const product = await Product.findById(id)
-        .select('price')
+            .select('price')
 
         res.status(200).json(product)
     }
-    catch(err){
-        res.status(400).json({error:err.message})
+    catch (err) {
+        res.status(400).json({ error: err.message })
     }
 }
 
@@ -100,12 +100,24 @@ async function addInStock(req, res) {
             quantity
         } = req.body
 
-        const updatedProduct = await Product
-            .findByIdAndUpdate(
-                id,
-                { $push: { in_stock: { size, quantity } } },
-                { new: true });
-        res.status(201).json(updatedProduct);
+        const product = await Product.findById(id);
+
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+        
+        const existingItem = product.in_stock.find(item => item.size === size);
+
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            product.in_stock.push({ size, quantity });
+        }
+
+        const updatedProduct = await product.save();
+
+        res.status(200).json(updatedProduct);
+
     }
     catch (err) {
         res.status(400).json({ error: err.message });
@@ -113,19 +125,19 @@ async function addInStock(req, res) {
 }
 
 async function deleteProduct(req, res) {
-    try{
+    try {
         const id = req.params.id;
         await Product.findByIdAndDelete(id);
-        
+
         res.sendStatus(200);
     }
-    catch(err){
+    catch (err) {
         res.sendStatus(500);
     }
-} 
+}
 
 async function editProduct(req, res) {
-    try{
+    try {
         const {
             name,
             description,
@@ -136,22 +148,22 @@ async function editProduct(req, res) {
         } = req.body;
 
         const id = req.params.id;
-        
+
         console.log(description);
 
         await Product.findByIdAndUpdate(id, {
-            name:name,
-            description:description,
-            price:price,
-            img:img,
-            categories:categories,
-            color:color
+            name: name,
+            description: description,
+            price: price,
+            img: img,
+            categories: categories,
+            color: color
         })
         res.sendStatus(200);
     }
-    catch(err){
+    catch (err) {
         res.sendStatus(500);
     }
 }
 
-module.exports = { addProduct, getAllProducts, addInStock, getProduct, getProductPrice, deleteProduct, editProduct};
+module.exports = { addProduct, getAllProducts, addInStock, getProduct, getProductPrice, deleteProduct, editProduct };
