@@ -12,7 +12,7 @@ interface Color {
     color: string;
 }
 
-const AddProduct: React.FC = () => {
+const AddProduct = () => {
     const axios = useAxiosPrivate();
 
     const [name, setName] = useState("");
